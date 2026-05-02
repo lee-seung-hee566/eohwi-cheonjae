@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>어휘 천재 — 말의 신이 되어라</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+
+<!-- ══════════════════════════════════════════════════════
+     ★ Google AdSense ★
+     ca-pub-XXXXXXXXXXXXXXXX 를 본인의 AdSense 게시자 ID로 교체하세요.
+══════════════════════════════════════════════════════ -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+<style>
+  :root {
+    --ink:#0d0d0d; --paper:#fdf6e3; --gold:#c9973a; --gold-light:#f5d98a;
+    --red:#c0392b; --jade:#2d7a5a; --ash:#6b6b6b;
+    --premium:#9b59b6; --premium-light:#d7aefb;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--ink);color:var(--paper);min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background:
+    radial-gradient(ellipse 80% 60% at 20% 10%,rgba(201,151,58,.08) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 90%,rgba(26,74,122,.12) 0%,transparent 60%),
+    repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.02) 40px),
+    repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.02) 40px);
+    pointer-events:none;z-index:0;}
+  #app{position:relative;z-index:1;}
+
+  .screen{display:none;min-height:100vh;padding:24px 16px;flex-direction:column;align-items:center;justify-content:center;animation:fadeIn .4s ease;}
+  .screen.active{display:flex;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+  /* ── TITLE ── */
+  .title-emblem{width:120px;height:120px;background:radial-gradient(circle,var(--gold) 0%,#7a5520 80%);border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:52px;box-shadow:0 0 40px rgba(201,151,58,.6),inset 0 2px 0 rgba(255,255,255,.3);animation:pulse 3s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 40px rgba(201,151,58,.6),inset 0 2px 0 rgba(255,255,255,.3)}50%{box-shadow:0 0 70px rgba(201,151,58,.9),inset 0 2px 0 rgba(255,255,255,.3)}}
+  .title-main{font-family:'Noto Serif KR',serif;font-size:clamp(36px,10vw,64px);font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,var(--gold-light) 0%,var(--gold) 50%,#8a6020 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;line-height:1.1;}
+  .title-sub{font-size:14px;color:var(--ash);letter-spacing:4px;text-transform:uppercase;margin-bottom:32px;}
+  .rank-preview{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:32px;max-width:480px;}
+  .rank-chip{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;border:1px solid currentColor;opacity:.7;}
+  .rank-천민{color:#a0a0a0;border-color:#505050;} .rank-평민{color:#90b870;border-color:#507040;}
+  .rank-귀족{color:#70a8e0;border-color:#3060a0;} .rank-군주{color:#e07040;border-color:#a04020;}
+  .rank-천제{color:var(--gold);border-color:#8a6020;} .rank-조물주{color:#e0a0f0;border-color:#a040c0;animation:rainbow 2s linear infinite;}
+  @keyframes rainbow{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
+  .name-section{width:100%;max-width:360px;margin-bottom:20px;}
+  .name-label{font-size:13px;color:var(--ash);margin-bottom:8px;letter-spacing:1px;}
+  .name-input{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(201,151,58,.4);border-radius:8px;padding:14px 18px;color:var(--paper);font-size:18px;font-family:'Noto Serif KR',serif;text-align:center;outline:none;transition:border-color .2s,box-shadow .2s;}
+  .name-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,151,58,.2);}
+  .name-input::placeholder{color:rgba(255,255,255,.2);}
+
+  /* ── BUTTONS ── */
+  .btn-gold{background:linear-gradient(135deg,var(--gold-light),var(--gold),#8a5e1a);color:var(--ink);border:none;border-radius:8px;padding:16px 48px;font-size:18px;font-weight:700;font-family:'Noto Serif KR',serif;cursor:pointer;letter-spacing:2px;box-shadow:0 4px 24px rgba(201,151,58,.5);transition:all .2s;width:100%;max-width:360px;}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,151,58,.7);}
+  .btn-ghost{background:transparent;color:var(--ash);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:12px 32px;font-size:14px;cursor:pointer;transition:all .2s;margin-top:10px;width:100%;max-width:360px;}
+  .btn-ghost:hover{border-color:rgba(255,255,255,.4);color:var(--paper);}
+  .btn-premium{background:linear-gradient(135deg,var(--premium-light),var(--premium),#6c3483);color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:1px;box-shadow:0 4px 24px rgba(155,89,182,.5);transition:all .2s;width:100%;max-width:360px;margin-top:10px;}
+  .btn-premium:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(155,89,182,.7);}
+
+  /* ── AD SLOTS ── */
+  .ad-slot{width:100%;max-width:640px;min-height:90px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin:12px 0;overflow:hidden;position:relative;}
+  .ad-slot-label{position:absolute;top:4px;left:8px;font-size:9px;color:rgba(255,255,255,.2);letter-spacing:1px;}
+  .ad-slot ins{display:block;width:100%;}
+
+  /* ── GAME HUD ── */
+  #gameScreen{gap:0;justify-content:flex-start;padding-top:16px;}
+  .hud{width:100%;max-width:640px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding:12px 16px;background:rgba(255,255,255,.04);border-radius:12px;border:1px solid rgba(255,255,255,.08);}
+  .hud-player{display:flex;flex-direction:column;}
+  .hud-name{font-size:13px;color:var(--ash);}
+  .hud-rank{font-size:18px;font-weight:700;font-family:'Noto Serif KR',serif;}
+  .hud-right{display:flex;gap:12px;align-items:center;}
+  .hud-score-wrap{text-align:right;}
+  .hud-score{font-size:24px;font-weight:700;color:var(--gold);}
+  .hud-score-label{font-size:11px;color:var(--ash);letter-spacing:1px;}
+  .premium-badge{background:linear-gradient(135deg,var(--premium),#6c3483);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;letter-spacing:1px;}
+  .progress-wrap{width:100%;max-width:640px;margin-bottom:14px;}
+  .progress-info{display:flex;justify-content:space-between;font-size:11px;color:var(--ash);margin-bottom:6px;letter-spacing:1px;}
+  .progress-bar{height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:3px;transition:width .6s cubic-bezier(.4,0,.2,1);}
+  .combo-display{width:100%;max-width:640px;height:26px;display:flex;align-items:center;margin-bottom:6px;}
+  .combo-text{font-size:13px;color:var(--gold);font-weight:700;opacity:0;transform:scale(.8);transition:all .3s;}
+  .combo-text.show{opacity:1;transform:scale(1);}
+
+  /* ── QUESTION CARD ── */
+  .question-card{width:100%;max-width:640px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px 24px;margin-bottom:14px;position:relative;overflow:hidden;}
+  .question-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent);}
+  .question-card.premium-q::before{background:linear-gradient(90deg,var(--premium),transparent);}
+  .question-card.premium-q{border-color:rgba(155,89,182,.3);}
+  .q-category{display:inline-block;padding:3px 10px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:2px;margin-bottom:14px;}
+  .cat-hanja{background:rgba(192,57,43,.25);color:#e88;border:1px solid rgba(192,57,43,.5);}
+  .cat-native{background:rgba(45,122,90,.25);color:#8e8;border:1px solid rgba(45,122,90,.5);}
+  .cat-proverb{background:rgba(26,74,122,.25);color:#88e;border:1px solid rgba(26,74,122,.5);}
+  .cat-idiom{background:rgba(201,151,58,.25);color:var(--gold-light);border:1px solid rgba(201,151,58,.5);}
+  .cat-premium-pack1,.cat-premium-pack2,.cat-premium-pack3{background:rgba(155,89,182,.3);color:var(--premium-light);border:1px solid rgba(155,89,182,.5);}
+  /* 신조어·사회현상 카테고리 */
+  .cat-teen   {background:rgba(255,80,120,.2);color:#ff8fb0;border:1px solid rgba(255,80,120,.5);}
+  .cat-twenty {background:rgba(80,160,255,.2);color:#90c8ff;border:1px solid rgba(80,160,255,.5);}
+  .cat-middle {background:rgba(180,120,60,.2);color:#e8a870;border:1px solid rgba(180,120,60,.5);}
+  .cat-social {background:rgba(60,180,120,.2);color:#70e8b0;border:1px solid rgba(60,180,120,.5);}
+  .q-text{font-family:'Noto Serif KR',serif;font-size:clamp(20px,5vw,28px);font-weight:700;line-height:1.4;margin-bottom:8px;white-space:pre-line;}
+  .q-hint{font-size:13px;color:var(--ash);font-style:italic;}
+  .timer-ring{position:absolute;top:20px;right:20px;width:44px;height:44px;}
+  .timer-ring svg{transform:rotate(-90deg);}
+  .timer-ring circle{fill:none;stroke-width:3;stroke-linecap:round;transition:stroke-dashoffset 1s linear;}
+  .timer-bg{stroke:rgba(255,255,255,.1);} .timer-fg{stroke:var(--gold);stroke-dasharray:126;}
+  .timer-number{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--gold);}
+  .options-grid{width:100%;max-width:640px;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+  .opt-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:16px 12px;color:var(--paper);font-size:14px;font-family:'Noto Sans KR',sans-serif;cursor:pointer;text-align:left;line-height:1.4;transition:all .15s;}
+  .opt-btn:hover:not(:disabled){background:rgba(255,255,255,.1);border-color:var(--gold);transform:translateY(-1px);}
+  .opt-btn.correct{background:rgba(45,122,90,.3);border-color:var(--jade);color:#9fffcc;}
+  .opt-btn.wrong{background:rgba(192,57,43,.2);border-color:var(--red);color:#ffa0a0;}
+  .opt-btn:disabled{cursor:default;}
+  .opt-letter{display:inline-block;width:22px;height:22px;background:rgba(255,255,255,.08);border-radius:50%;text-align:center;line-height:22px;font-size:11px;font-weight:700;margin-right:8px;}
+  .explain-box{width:100%;max-width:640px;background:rgba(255,255,255,.04);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;font-size:13px;line-height:1.7;color:#ccc;min-height:48px;}
+
+  /* ── PREMIUM SCREEN ── */
+  #premiumScreen{gap:16px;}
+  .premium-crown{font-size:56px;animation:pulse 2s ease-in-out infinite;margin-bottom:8px;}
+  .premium-title{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:900;background:linear-gradient(135deg,var(--premium-light),var(--premium));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;margin-bottom:4px;}
+  .premium-subtitle{font-size:13px;color:var(--ash);margin-bottom:8px;}
+  .pack-grid{display:flex;flex-direction:column;gap:12px;width:100%;max-width:440px;}
+  .pack-card{background:rgba(155,89,182,.1);border:1px solid rgba(155,89,182,.3);border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
+  .pack-card:hover{background:rgba(155,89,182,.2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(155,89,182,.3);}
+  .pack-card.owned{border-color:var(--gold);background:rgba(201,151,58,.1);cursor:default;}
+  .pack-card.owned:hover{transform:none;}
+  .pack-icon{font-size:36px;flex-shrink:0;}
+  .pack-info{flex:1;}
+  .pack-name{font-size:16px;font-weight:700;margin-bottom:3px;}
+  .pack-desc{font-size:12px;color:var(--ash);line-height:1.5;}
+  .pack-price{font-size:15px;font-weight:700;color:var(--premium-light);background:rgba(155,89,182,.3);padding:6px 12px;border-radius:8px;white-space:nowrap;}
+  .pack-price.owned-label{color:var(--gold);background:rgba(201,151,58,.2);}
+  .pack-badge{position:absolute;top:8px;right:8px;background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;letter-spacing:1px;}
+
+  /* ── DUEL ── */
+  #duelScreen{gap:16px;}
+  .duel-header{text-align:center;font-family:'Noto Serif KR',serif;}
+  .duel-title{font-size:28px;font-weight:900;color:var(--gold);letter-spacing:2px;margin-bottom:4px;}
+  .duel-subtitle{font-size:13px;color:var(--ash);}
+  .duel-arena{display:flex;align-items:center;gap:16px;width:100%;max-width:560px;}
+  .duel-fighter{flex:1;background:rgba(255,255,255,.04);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,.1);}
+  .duel-fighter.player-side{border-color:rgba(201,151,58,.4);}
+  .duel-fighter.enemy-side{border-color:rgba(192,57,43,.4);}
+  .fighter-emoji{font-size:42px;margin-bottom:6px;}
+  .fighter-name{font-size:14px;font-weight:700;}
+  .fighter-hp{height:8px;background:rgba(255,255,255,.1);border-radius:4px;margin-top:8px;overflow:hidden;}
+  .fighter-hp-fill{height:100%;border-radius:4px;transition:width .5s ease;}
+  .player-hp-fill{background:linear-gradient(90deg,var(--jade),#6ef0a0);}
+  .enemy-hp-fill{background:linear-gradient(90deg,var(--red),#ff8080);}
+  .duel-vs{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:900;color:var(--red);text-shadow:0 0 20px rgba(192,57,43,.8);flex-shrink:0;}
+
+  /* ── RESULT ── */
+  #resultScreen{gap:20px;text-align:center;}
+  .result-emblem{width:110px;height:110px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:50px;margin:0 auto;animation:spin-in .5s cubic-bezier(.34,1.56,.64,1);}
+  @keyframes spin-in{from{transform:scale(0) rotate(-180deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+  .result-rank-name{font-family:'Noto Serif KR',serif;font-size:36px;font-weight:900;letter-spacing:-1px;}
+  .result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;max-width:400px;}
+  .stat-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 8px;}
+  .stat-num{font-size:28px;font-weight:700;color:var(--gold);}
+  .stat-label{font-size:11px;color:var(--ash);margin-top:2px;letter-spacing:1px;}
+  .next-rank-info{background:rgba(201,151,58,.1);border:1px solid rgba(201,151,58,.3);border-radius:12px;padding:16px 24px;width:100%;max-width:400px;font-size:14px;line-height:1.6;}
+
+  /* ── RANK TABLE ── */
+  .rank-table{width:100%;max-width:400px;}
+  .rank-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);}
+  .rank-row-emblem{font-size:24px;width:36px;text-align:center;}
+  .rank-row-info{flex:1;}
+  .rank-row-name{font-size:15px;font-weight:700;}
+  .rank-row-req{font-size:11px;color:var(--ash);margin-top:1px;}
+  .rank-row-pts{font-size:12px;color:var(--gold);font-weight:700;}
+
+  /* ── FLASH ── */
+  #flashMsg{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-80px);background:rgba(13,13,13,.95);border:1px solid var(--gold);border-radius:8px;padding:12px 28px;font-size:15px;font-weight:700;color:var(--gold);z-index:9999;transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .3s;opacity:0;white-space:nowrap;pointer-events:none;}
+  #flashMsg.show{transform:translateX(-50%) translateY(0);opacity:1;}
+
+  /* ── MODAL ── */
+  .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;display:none;align-items:center;justify-content:center;padding:20px;}
+  .modal-bg.active{display:flex;}
+  .modal-box{background:#1a1a1a;border:1px solid rgba(155,89,182,.5);border-radius:16px;padding:28px 24px;max-width:360px;width:100%;text-align:center;animation:fadeIn .3s ease;}
+  .modal-title{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:900;color:var(--premium-light);margin-bottom:8px;}
+  .modal-body{font-size:14px;color:#ccc;line-height:1.7;margin-bottom:20px;}
+  .modal-btns{display:flex;gap:10px;}
+  .modal-confirm{flex:1;background:linear-gradient(135deg,var(--premium-light),var(--premium));color:#fff;border:none;border-radius:8px;padding:12px;font-size:15px;font-weight:700;cursor:pointer;}
+  .modal-cancel{flex:1;background:transparent;color:var(--ash);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:12px;font-size:15px;cursor:pointer;}
+
+  @media(max-width:400px){.options-grid{grid-template-columns:1fr}.duel-arena{flex-direction:column}}
+
+  /* ══ 프리미엄 테마 ══ */
+  body.theme-gold {
+    --ink:#0d0a00; --paper:#fff8e0;
+    background: radial-gradient(ellipse at 50% 0%, #2a1f00 0%, #0d0a00 60%);
+  }
+  body.theme-gold .question-card { border-color:rgba(255,215,0,.25); }
+  body.theme-gold .progress-fill { background:linear-gradient(90deg,#ffd700,#ffe566); }
+  body.theme-gold .opt-btn:hover:not(:disabled) { border-color:#ffd700; }
+
+  body.theme-purple {
+    --ink:#0d0015; --paper:#f5eaff;
+    background: radial-gradient(ellipse at 50% 0%, #1e0035 0%, #0d0015 60%);
+  }
+  body.theme-purple .question-card { border-color:rgba(180,100,255,.25); }
+  body.theme-purple .progress-fill { background:linear-gradient(90deg,var(--premium),var(--premium-light)); }
+  body.theme-purple .opt-btn:hover:not(:disabled) { border-color:var(--premium-light); }
+  body.theme-purple .timer-fg { stroke:var(--premium-light); }
+  body.theme-purple .hud-score { color:var(--premium-light); }
+
+  body.theme-emerald {
+    --ink:#001510; --paper:#e8fff5;
+    background: radial-gradient(ellipse at 50% 0%, #002515 0%, #001510 60%);
+  }
+  body.theme-emerald .question-card { border-color:rgba(0,200,120,.25); }
+  body.theme-emerald .progress-fill { background:linear-gradient(90deg,#00c878,#6effc0); }
+  body.theme-emerald .opt-btn:hover:not(:disabled) { border-color:#00c878; }
+  body.theme-emerald .timer-fg { stroke:#00c878; }
+  body.theme-emerald .hud-score { color:#00c878; }
+
+  /* ── 전용 칭호 배지 ── */
+  .pro-title-badge {
+    display:inline-flex; align-items:center; gap:6px;
+    background:linear-gradient(135deg,rgba(155,89,182,.3),rgba(155,89,182,.1));
+    border:1px solid rgba(155,89,182,.5); border-radius:20px;
+    padding:6px 16px; font-size:13px; font-weight:700; color:var(--premium-light);
+    letter-spacing:1px; margin-bottom:16px;
+  }
+
+  /* ── Buy Me a Coffee ── */
+  .bmc-wrap { margin-top:16px; text-align:center; }
+  .bmc-btn {
+    display:inline-flex; align-items:center; gap:8px;
+    background:#FFDD00; color:#000; border:none; border-radius:8px;
+    padding:12px 24px; font-size:14px; font-weight:700; cursor:pointer;
+    text-decoration:none; transition:all .2s; letter-spacing:.5px;
+  }
+  .bmc-btn:hover { background:#FFE833; transform:translateY(-2px); box-shadow:0 6px 20px rgba(255,221,0,.4); }
+  .bmc-desc { font-size:12px; color:var(--ash); margin-top:6px; }
+
+  /* ── 프리미엄 혜택 안내 (팩 카드 내) ── */
+  .pack-benefits { margin-top:8px; display:flex; flex-wrap:wrap; gap:4px; }
+  .pack-benefit-chip { font-size:10px; padding:2px 8px; border-radius:10px; font-weight:700; letter-spacing:.5px; }
+  .chip-title  { background:rgba(201,151,58,.2); color:var(--gold-light); border:1px solid rgba(201,151,58,.4); }
+  .chip-theme  { background:rgba(155,89,182,.2); color:var(--premium-light); border:1px solid rgba(155,89,182,.4); }
+  .chip-bonus  { background:rgba(45,122,90,.2); color:#9fffcc; border:1px solid rgba(45,122,90,.4); }
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- FLASH -->
+<div id="flashMsg"></div>
+
+<!-- 구매 확인 모달 -->
+<div class="modal-bg" id="purchaseModal">
+  <div class="modal-box">
+    <div class="modal-title" id="modalTitle">프리미엄 팩 구매</div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-btns">
+      <button class="modal-confirm" id="modalConfirmBtn">구매하기</button>
+      <button class="modal-cancel" onclick="closeModal()">취소</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TITLE ══ -->
+<div id="titleScreen" class="screen active">
+  <div class="title-emblem">📜</div>
+  <div class="title-main">어휘 천재</div>
+  <div class="title-sub">말의 신이 되어라</div>
+  <div class="rank-preview">
+    <span class="rank-chip rank-천민">천민</span><span style="color:#555;align-self:center">→</span>
+    <span class="rank-chip rank-평민">평민</span><span style="color:#555;align-self:center">→</span>
+    <span class="rank-chip rank-귀족">귀족</span><span style="color:#555;align-self:center">→</span>
+    <span class="rank-chip rank-군주">군주</span><span style="color:#555;align-self:center">→</span>
+    <span class="rank-chip rank-천제">천제</span><span style="color:#555;align-self:center">⚔</span>
+    <span class="rank-chip rank-조물주">조물주</span>
+  </div>
+  <div class="name-section">
+    <div class="name-label">이름을 입력하세요</div>
+    <input class="name-input" id="nameInput" maxlength="8" placeholder="예) 홍길동"/>
+  </div>
+  <button class="btn-gold" onclick="startGame()">천민으로 시작하기</button>
+  <!-- 카테고리 안내 -->
+  <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:14px 0 4px;max-width:400px">
+    <span style="font-size:10px;color:var(--ash);width:100%;text-align:center;letter-spacing:1px;margin-bottom:4px">FREE CATEGORIES</span>
+    <span class="q-category cat-hanja" style="opacity:.85">한자어</span>
+    <span class="q-category cat-native" style="opacity:.85">고유어</span>
+    <span class="q-category cat-proverb" style="opacity:.85">속담</span>
+    <span class="q-category cat-idiom" style="opacity:.85">한자성어</span>
+    <span class="q-category cat-teen" style="opacity:.85">🔥 10대 신조어</span>
+    <span class="q-category cat-twenty" style="opacity:.85">💬 20대 신조어</span>
+    <span class="q-category cat-middle" style="opacity:.85">🧓 40-50대 어휘</span>
+    <span class="q-category cat-social" style="opacity:.85">🇰🇷 한국 사회현상</span>
+  </div>
+  <button class="btn-premium" onclick="showScreen('premiumScreen')">💎 프리미엄 문제팩 보기</button>
+  <button class="btn-ghost" onclick="showRankTable()">계급 안내 보기</button>
+
+  <!-- Buy Me a Coffee 후원 -->
+  <div class="bmc-wrap">
+    <!-- ★ href의 YOUR_USERNAME을 buymeacoffee.com 가입 후 본인 ID로 교체하세요 -->
+    <a class="bmc-btn" href="https://buymeacoffee.com/YOUR_USERNAME" target="_blank" rel="noopener">
+      ☕ 커피 한 잔 후원하기
+    </a>
+    <div class="bmc-desc">게임이 마음에 드셨다면 개발자에게 커피 한 잔을!</div>
+  </div>
+
+  <!-- 타이틀 배너 광고 -->
+  <div class="ad-slot" style="margin-top:16px">
+    <span class="ad-slot-label">ADVERTISEMENT</span>
+    <!-- ★ data-ad-client, data-ad-slot 을 AdSense 발급값으로 교체 -->
+    <ins class="adsbygoogle" style="display:block;width:100%;height:90px"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="1111111111"
+         data-ad-format="horizontal"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+</div>
+
+<!-- ══ PREMIUM ══ -->
+<div id="premiumScreen" class="screen">
+  <div style="text-align:center">
+    <div class="premium-crown">💎</div>
+    <div class="premium-title">프리미엄 문제팩</div>
+    <div class="premium-subtitle">더 깊고 넓은 어휘의 세계로</div>
+  </div>
+  <div class="pack-grid" id="packGrid"></div>
+
+  <!-- 프리미엄 화면 광고 -->
+  <div class="ad-slot" style="max-width:440px">
+    <span class="ad-slot-label">ADVERTISEMENT</span>
+    <ins class="adsbygoogle" style="display:block;width:100%;height:90px"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="2222222222"
+         data-ad-format="horizontal"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+  <button class="btn-ghost" style="margin-top:8px" onclick="showScreen('titleScreen')">← 돌아가기</button>
+</div>
+
+<!-- ══ RANK TABLE ══ -->
+<div id="rankScreen" class="screen">
+  <div style="font-family:'Noto Serif KR',serif;font-size:22px;font-weight:900;color:var(--gold);margin-bottom:8px;letter-spacing:2px;">계급 안내</div>
+  <div style="font-size:13px;color:var(--ash);margin-bottom:24px;">어휘력 점수에 따라 계급이 부여됩니다</div>
+  <div class="rank-table">
+    <div class="rank-row"><div class="rank-row-emblem">🪨</div><div class="rank-row-info"><div class="rank-row-name rank-천민">천민 賤民</div><div class="rank-row-req">시작 계급</div></div><div class="rank-row-pts">0점</div></div>
+    <div class="rank-row"><div class="rank-row-emblem">🌱</div><div class="rank-row-info"><div class="rank-row-name rank-평민">평민 平民</div><div class="rank-row-req">기초 어휘 습득</div></div><div class="rank-row-pts">200점</div></div>
+    <div class="rank-row"><div class="rank-row-emblem">💎</div><div class="rank-row-info"><div class="rank-row-name rank-귀족">귀족 貴族</div><div class="rank-row-req">중급 어휘 구사</div></div><div class="rank-row-pts">500점</div></div>
+    <div class="rank-row"><div class="rank-row-emblem">👑</div><div class="rank-row-info"><div class="rank-row-name rank-군주">군주 君主</div><div class="rank-row-req">고급 어휘 통달</div></div><div class="rank-row-pts">900점</div></div>
+    <div class="rank-row"><div class="rank-row-emblem">⚡</div><div class="rank-row-info"><div class="rank-row-name rank-천제">천제 天帝</div><div class="rank-row-req">어휘의 지배자</div></div><div class="rank-row-pts">1400점</div></div>
+    <div class="rank-row" style="border-bottom:none"><div class="rank-row-emblem">🌌</div><div class="rank-row-info"><div class="rank-row-name rank-조물주">조물주 造物主</div><div class="rank-row-req">천제 대결 승리</div></div><div class="rank-row-pts">대결 승리</div></div>
+  </div>
+  <button class="btn-ghost" style="margin-top:32px" onclick="showScreen('titleScreen')">← 돌아가기</button>
+</div>
+
+<!-- ══ GAME ══ -->
+<div id="gameScreen" class="screen">
+  <div class="hud">
+    <div class="hud-player">
+      <span class="hud-name" id="hudName">이름</span>
+      <span class="hud-rank" id="hudRank">🪨 천민</span>
+    </div>
+    <div class="hud-right">
+      <div id="premiumBadgeHud" style="display:none"><span class="premium-badge">💎 PRO</span></div>
+      <div class="hud-score-wrap">
+        <div class="hud-score" id="hudScore">0</div>
+        <div class="hud-score-label">SCORE</div>
+      </div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-info"><span id="progressLabel">다음 계급까지</span><span id="progressPct">0%</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+  <div class="combo-display"><div class="combo-text" id="comboText"></div></div>
+
+  <!-- 인게임 광고 (5문제마다) -->
+  <div class="ad-slot" id="inGameAd" style="display:none">
+    <span class="ad-slot-label">ADVERTISEMENT</span>
+    <ins class="adsbygoogle" style="display:block;width:100%;height:90px"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="3333333333"
+         data-ad-format="horizontal"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div class="question-card" id="questionCard">
+    <span class="q-category" id="qCategory">한자어</span>
+    <div class="q-text" id="qText">문제 로딩 중...</div>
+    <div class="q-hint" id="qHint"></div>
+    <div class="timer-ring">
+      <svg viewBox="0 0 44 44" width="44" height="44">
+        <circle class="timer-bg" cx="22" cy="22" r="20"/>
+        <circle class="timer-fg" id="timerCircle" cx="22" cy="22" r="20" style="stroke-dasharray:126;stroke-dashoffset:0"/>
+      </svg>
+      <div class="timer-number" id="timerNum">15</div>
+    </div>
+  </div>
+  <div class="options-grid" id="optionsGrid"></div>
+  <div class="explain-box" id="explainBox"></div>
+</div>
+
+<!-- ══ DUEL ══ -->
+<div id="duelScreen" class="screen">
+  <div class="duel-header">
+    <div class="duel-title">⚔ 천제 대결</div>
+    <div class="duel-subtitle" id="duelSubtitle">조물주의 자리를 두고 다투는 최후의 대결!</div>
+  </div>
+  <div class="duel-arena">
+    <div class="duel-fighter player-side">
+      <div class="fighter-emoji">⚡</div>
+      <div class="fighter-name" id="duelPlayerName">나</div>
+      <div class="fighter-hp"><div class="fighter-hp-fill player-hp-fill" id="playerHpBar" style="width:100%"></div></div>
+      <div style="font-size:11px;color:var(--ash);margin-top:4px" id="playerHpText">HP 3/3</div>
+    </div>
+    <div class="duel-vs">VS</div>
+    <div class="duel-fighter enemy-side">
+      <div class="fighter-emoji" id="enemyEmoji">👹</div>
+      <div class="fighter-name" id="enemyName">???</div>
+      <div class="fighter-hp"><div class="fighter-hp-fill enemy-hp-fill" id="enemyHpBar" style="width:100%"></div></div>
+      <div style="font-size:11px;color:var(--ash);margin-top:4px" id="enemyHpText">HP 3/3</div>
+    </div>
+  </div>
+  <div class="question-card" id="duelQuestionCard" style="max-width:640px;width:100%">
+    <span class="q-category" id="duelQCategory">한자어</span>
+    <div class="q-text" id="duelQText">대결 준비 중...</div>
+    <div class="q-hint" id="duelQHint"></div>
+    <div class="timer-ring">
+      <svg viewBox="0 0 44 44" width="44" height="44">
+        <circle class="timer-bg" cx="22" cy="22" r="20"/>
+        <circle class="timer-fg" id="duelTimerCircle" cx="22" cy="22" r="20" style="stroke-dasharray:126;stroke-dashoffset:0"/>
+      </svg>
+      <div class="timer-number" id="duelTimerNum">10</div>
+    </div>
+  </div>
+  <div class="options-grid" id="duelOptionsGrid" style="max-width:640px;width:100%"></div>
+  <div class="explain-box" id="duelExplainBox" style="max-width:640px"></div>
+</div>
+
+<!-- ══ RESULT ══ -->
+<div id="resultScreen" class="screen">
+  <div class="result-emblem" id="resultEmblem">🪨</div>
+  <div class="result-rank-name" id="resultRankName">천민</div>
+  <div style="font-size:14px;color:var(--ash)" id="resultMsg">수고하셨습니다</div>
+  <div class="result-stats">
+    <div class="stat-box"><div class="stat-num" id="statScore">0</div><div class="stat-label">총 점수</div></div>
+    <div class="stat-box"><div class="stat-num" id="statCorrect">0</div><div class="stat-label">정답</div></div>
+    <div class="stat-box"><div class="stat-num" id="statCombo">0</div><div class="stat-label">최고 콤보</div></div>
+  </div>
+  <div class="next-rank-info" id="nextRankInfo"></div>
+
+  <!-- 결과 화면 광고 -->
+  <div class="ad-slot" style="max-width:400px">
+    <span class="ad-slot-label">ADVERTISEMENT</span>
+    <ins class="adsbygoogle" style="display:block;width:100%;height:90px"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="4444444444"
+         data-ad-format="horizontal"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <button class="btn-gold" id="resultBtn" onclick="handleResultBtn()">다시 도전</button>
+  <button class="btn-ghost" onclick="showScreen('titleScreen')">처음으로</button>
+</div>
+
+</div><!-- #app -->
+
+<script>
+// ══════════════════════════════════════
+//  무료 문제 뱅크
+// ══════════════════════════════════════
+const QUESTIONS={
+  hanja:[
+    {q:'다음 한자어의 뜻으로 옳은 것은?\n\n「 자중지란 (自中之亂) 」',hint:'自=스스로, 中=가운데, 之=의, 亂=어지러울',options:['다른 나라의 침략으로 인한 혼란','같은 편 안에서 일어나는 싸움','스스로 반성하는 태도','중간에서 일을 조정함'],answer:1,explain:'자중지란(自中之亂): 같은 무리나 편 안에서 내부적으로 일어나는 싸움이나 혼란을 뜻합니다.'},
+    {q:'「 와신상담 (臥薪嘗膽) 」의 올바른 뜻은?',hint:'臥=누울, 薪=섶, 嘗=맛볼, 膽=쓸개',options:['편안한 자리에서 즐겁게 지냄','원수를 갚으려고 고통을 참으며 기회를 기다림','좋은 음식과 편안한 잠자리','잘못을 뉘우치고 새로 시작함'],answer:1,explain:'와신상담: 섶 위에 눕고 쓸개를 핥는다는 뜻으로, 원수를 갚으려고 온갖 고생을 참고 견딤을 비유합니다.'},
+    {q:'「 지피지기 (知彼知己) 」의 뜻은?',hint:'知=알다, 彼=저, 己=자기',options:['상대와 자신을 잘 알면 이길 수 있음','서로를 모를 때 겸손해야 함','지식이 많을수록 교만해짐','알면서도 모른 척함'],answer:0,explain:'지피지기(知彼知己): 상대방을 알고 자기 자신을 안다. 손자병법의 명구로 "지피지기면 백전불태"라고 합니다.'},
+    {q:'「 역지사지 (易地思之) 」의 뜻은?',hint:'易=바꿀, 地=처지, 思=생각, 之=그것',options:['쉬운 자리를 먼저 차지함','서로 처지를 바꾸어 생각함','학문을 쉽게 익히는 방법','땅을 바꾸어 농사를 지음'],answer:1,explain:'역지사지: 처지를 서로 바꾸어 생각한다는 뜻으로, 상대방의 입장에서 이해하려는 태도를 말합니다.'},
+    {q:'「 사필귀정 (事必歸正) 」의 뜻은?',hint:'事=일, 必=반드시, 歸=돌아올, 正=바를',options:['일을 절대 미루지 말라','모든 일은 반드시 올바른 방향으로 돌아감','사람은 죽으면 땅으로 돌아감','급한 일을 먼저 처리해야 함'],answer:1,explain:'사필귀정: 어떤 일이든 반드시 이치에 맞는 올바른 길로 돌아간다는 뜻입니다.'},
+    {q:'「 명실상부 (名實相符) 」의 뜻은?',hint:'名=이름, 實=실제, 相=서로, 符=부합할',options:['이름은 크고 실제는 작음','이름과 실제가 서로 꼭 들어맞음','명예를 위해 실력을 갖춤','서로의 이름을 부르며 인사함'],answer:1,explain:'명실상부: 이름과 실상이 서로 꼭 들어맞음. 예: "그는 명실상부한 최고의 선수이다."'},
+    {q:'「 절차탁마 (切磋琢磨) 」의 뜻은?',hint:'切=자를, 磋=갈, 琢=다듬을, 磨=갈',options:['학문과 덕행을 열심히 닦음','칼과 도끼로 나무를 자름','차례대로 순서를 지킴','물건을 깎아 팔아 이익을 얻음'],answer:0,explain:'절차탁마: 뼈·뿔·옥·돌을 자르고 갈고 쪼고 닦는다는 뜻으로, 학문이나 덕행을 부지런히 닦음을 비유합니다.'},
+    {q:'「 각주구검 (刻舟求劍) 」이 뜻하는 상황은?',hint:'刻=새길, 舟=배, 求=구할, 劍=칼',options:['배에서 낚시하며 여유를 즐김','시대 변화를 모르고 낡은 방법을 고집함','숨겨진 보물을 찾아 배를 탐','칼로 배를 만드는 솜씨'],answer:1,explain:'각주구검: 배에서 칼을 빠뜨리고 배에 표시해 두었다가 나중에 찾으려 한다는 뜻. 융통성 없이 낡은 방법을 고집함을 비유합니다.'},
+    {q:'「 혜안 (慧眼) 」의 올바른 의미는?',hint:'慧=슬기로울, 眼=눈',options:['아름다운 눈매','사물을 날카롭게 꿰뚫어 보는 안목','눈이 나빠 안경이 필요한 상태','타고난 미모'],answer:1,explain:'혜안(慧眼): 슬기로운 눈이라는 뜻으로, 사물의 본질을 날카롭게 파악하는 안목이나 능력을 말합니다.'},
+    {q:'「 불치하문 (不恥下問) 」의 뜻은?',hint:'不=아닐, 恥=부끄러울, 下=아래, 問=물을',options:['아랫사람에게 묻는 것을 부끄러워하지 않음','모르는 것은 절대 묻지 않음','아랫사람이 윗사람에게 질문함','어떤 일도 부끄러워 해야 함'],answer:0,explain:'불치하문: 자신보다 아랫사람에게 묻는 것을 부끄러워하지 않는다는 뜻으로, 배움에 겸손함을 강조합니다.'},
+  ],
+  native:[
+    {q:'다음 고유어의 뜻은?\n\n「 나부랭이 」',hint:'사람이나 사물을 낮잡아 보는 말',options:['나비의 한 종류','하찮은 물건이나 사람을 낮잡아 이르는 말','나무에 붙는 벌레','어린아이의 장난감'],answer:1,explain:'나부랭이: 하찮고 변변찮은 물건이나 사람을 낮잡아 이르는 말입니다.'},
+    {q:'「 눈꼴시다 」의 뜻은?',hint:'보기에 좋지 않은 감정을 나타냄',options:['눈이 매우 시리다','보기에 매우 역겨워 눈살이 찌푸려지다','눈에서 눈물이 나다','시력이 좋지 않다'],answer:1,explain:'눈꼴시다: 행동이나 모습이 보기에 매우 역겹거나 마음에 들지 않다는 뜻입니다.'},
+    {q:'「 가납사니 」의 뜻은?',hint:'비슷한 의미: 쓸모없는 것',options:['쓸데없이 참견하는 사람','말이 없고 조용한 사람','가난하지만 성실한 사람','어른을 공경하는 사람'],answer:0,explain:'가납사니: 쓸모없는 사람이나 물건을 낮잡아 이르는 말입니다.'},
+    {q:'「 나달나달 」의 올바른 쓰임은?',hint:'옷감이나 물건의 상태를 나타내는 말',options:['새 옷을 자랑스럽게 입고 다니다','해진 옷 끝이 실처럼 늘어지는 모양','빠르게 달려가는 모습','물이 넘쳐 흘러내리는 모양'],answer:1,explain:'나달나달: 헝겊이나 종이 따위의 가장자리가 자꾸 찢어지거나 해어져 늘어지는 모양을 나타냅니다.'},
+    {q:'「 허방을 짚다 」의 뜻은?',hint:'기대와 다른 결과가 나오는 상황',options:['땅을 힘껏 밟다','기대했던 것이 어긋나 낭패를 보다','오랫동안 서 있다','길을 잘못 들어 헤매다'],answer:1,explain:'허방을 짚다: 기대가 어긋나 낭패를 보는 상황을 비유합니다.'},
+    {q:'「 호젓하다 」의 뜻으로 가장 적절한 것은?',hint:'조용하고 쓸쓸한 느낌의 고유어',options:['몹시 화가 나고 억울하다','호방하고 기개가 있다','외지고 쓸쓸하여 고즈넉하다','밝고 활기차다'],answer:2,explain:'호젓하다: 외따로 떨어져 있어 쓸쓸하고 고요한 느낌이 있다는 뜻입니다.'},
+    {q:'「 칠칠맞다 」는 어떤 상황에 쓰는 말인가요?',hint:'행동이나 태도에 대한 평가',options:['매우 영리하고 빈틈이 없다','일을 처리하는 것이 조심스럽고 꼼꼼하다','행동이 야무지지 못하고 어수선하다','칠을 잘 다루는 솜씨가 있다'],answer:2,explain:'칠칠맞다: 행동이 단정하지 못하고 어수선하거나 야무지지 못한 사람에게 씁니다.'},
+    {q:'「 미쁘다 」의 뜻은?',hint:'신뢰와 믿음에 관련된 말',options:['미모가 뛰어나다','미련하고 어리석다','믿음직하고 신뢰할 만하다','미숙하고 서투르다'],answer:2,explain:'미쁘다: 믿음직스럽고 신뢰할 만하다는 뜻의 고유어입니다.'},
+    {q:'「 스스럼없다 」의 올바른 뜻은?',hint:'관계나 태도에 관련된 표현',options:['조심스럽고 예의 바르다','서먹하거나 조심스러운 마음이 없다','스스로 반성하지 않는다','무관심하고 냉담하다'],answer:1,explain:'스스럼없다: 조심스럽거나 서먹한 마음이 없이 편하고 거리낌이 없다는 뜻입니다.'},
+    {q:'「 눈치코치 」의 뜻은?',hint:'감각이나 인식과 관련된 표현',options:['눈과 코를 함께 씻다','상황을 파악하는 감각이 전혀 없음','매우 예민한 후각','표정으로 감정을 드러냄'],answer:1,explain:'눈치코치(도 없다): 상황이나 분위기를 파악하는 능력이 전혀 없다는 말입니다.'},
+  ],
+  proverb:[
+    {q:'다음 속담의 의미는?\n\n「 가는 말이 고와야 오는 말이 곱다 」',hint:'말과 관계에 관련된 속담',options:['말을 아름답게 쓰면 공부가 된다','자신이 먼저 남에게 좋게 해야 남도 자신에게 좋게 한다','말은 갈수록 예뻐진다','좋은 말씨는 배워야 한다'],answer:1,explain:'자기가 먼저 남에게 잘 대해야 남도 자기에게 잘 대해 준다는 뜻입니다.'},
+    {q:'「 등잔 밑이 어둡다 」의 뜻은?',hint:'가까운 것을 놓치는 상황',options:['전기가 없던 시절의 불편함','가까이 있는 것을 오히려 잘 모르다','밤에 공부하면 눈이 나빠진다','어두운 데서 일하면 능률이 오른다'],answer:1,explain:'등잔 밑이 어둡다: 가까이 있는 것이 오히려 잘 모르거나 찾기 어려움을 비유합니다.'},
+    {q:'「 세 살 버릇 여든까지 간다 」의 교훈은?',hint:'습관과 어린 시절에 관련된 속담',options:['어린이는 꾸중을 들어야 잘 자란다','어릴 때 배운 버릇이나 습관은 늙어서도 고치기 어렵다','세 살짜리 아이도 어른과 같이 취급해야 한다','나이가 들면 건강에 신경 써야 한다'],answer:1,explain:'어릴 때 형성된 습관은 나이가 들어서도 쉽게 바뀌지 않는다는 교훈입니다.'},
+    {q:'「 빈 수레가 요란하다 」의 의미는?',hint:'실속과 겉모습에 관련된 속담',options:['빈 배는 파도에 많이 흔들린다','실속이 없는 사람이 겉으로 더 떠들고 소란스럽다','수레는 비어있어야 빨리 달린다','시끄러운 사람은 일을 잘한다'],answer:1,explain:'짐이 없는 빈 수레는 덜컹거리는 소리가 크다는 데서, 속 없는 사람이 더 떠든다는 뜻입니다.'},
+    {q:'「 개천에서 용 난다 」의 뜻은?',hint:'출신과 성공에 관련된 속담',options:['개가 용으로 변신한다는 전설','미천한 집안에서 뛰어난 인물이 나온다','물이 많아야 큰 동물이 산다','환경보다 개인의 능력이 중요하다'],answer:1,explain:'변변치 못한 환경이나 집안에서 훌륭한 인물이 나온다는 뜻입니다.'},
+    {q:'「 쥐구멍에도 볕들 날 있다 」의 의미는?',hint:'희망과 역경에 관련된 속담',options:['쥐는 빛을 싫어하는 동물이다','아무리 힘들어도 좋은 때가 올 수 있다','작은 구멍으로도 빛이 들어온다','좋은 일은 예고 없이 찾아온다'],answer:1,explain:'아무리 어두운 환경에 있더라도 언젠가는 좋은 기회가 찾아올 수 있다는 희망의 말입니다.'},
+    {q:'「 낫 놓고 기역자도 모른다 」의 뜻은?',hint:'지식이나 교육 수준에 관련된 속담',options:['낫으로는 글씨를 쓸 수 없다','글자 모양과 비슷한 물건도 그 관계를 모를 만큼 무식하다','낫을 제대로 사용할 줄 모른다','일을 잘하려면 도구를 알아야 한다'],answer:1,explain:'낫의 모양이 기역(ㄱ)자와 비슷한데도 모른다는 뜻. 아주 무식하거나 배운 게 없음을 비유합니다.'},
+    {q:'「 콩 심은 데 콩 나고 팥 심은 데 팥 난다 」의 교훈은?',hint:'원인과 결과에 관련된 속담',options:['농사는 계획적으로 지어야 한다','모든 일은 원인에 따라 그에 맞는 결과가 생긴다','콩과 팥은 같이 심을 수 없다','씨를 많이 뿌릴수록 수확이 많다'],answer:1,explain:'원인에 따라 그에 합당한 결과가 나온다는 뜻입니다.'},
+    {q:'「 원숭이도 나무에서 떨어진다 」의 의미는?',hint:'실수와 전문성에 관련된 속담',options:['원숭이는 나무를 잘 타지 못한다','아무리 익숙한 사람도 실수를 할 수 있다','나무는 높이 있는 동물도 위험하다','경험이 많아야 나무를 잘 탄다'],answer:1,explain:'아무리 능숙한 사람이라도 실수를 할 때가 있다는 뜻입니다.'},
+    {q:'「 호랑이 없는 곳에 토끼가 스승이라 」의 뜻은?',hint:'권력과 서열에 관련된 속담',options:['토끼는 모든 동물의 친구다','무능한 사람도 뛰어난 자가 없으면 인정받는다','스승은 항상 강해야 한다','약자도 강자가 없으면 왕이 될 수 있다'],answer:1,explain:'뛰어난 인물이 없는 곳에서는 변변치 못한 사람도 어른 대접을 받는다는 뜻입니다.'},
+  ],
+  idiom:[
+    {q:'다음 한자성어의 뜻은?\n\n「 일석이조 (一石二鳥) 」',hint:'一=하나, 石=돌, 二=둘, 鳥=새',options:['돌 하나에 새 두 마리','한 가지 일로 두 가지 이득을 얻음','두 개의 돌로 하나를 만듦','하나씩 차례로 해결함'],answer:1,explain:'일석이조: 하나의 행동으로 두 가지 이득을 동시에 얻음을 비유합니다.'},
+    {q:'「 우공이산 (愚公移山) 」의 의미는?',hint:'愚=어리석을, 公=공, 移=옮길, 山=산',options:['어리석은 사람은 일을 시작하지 않음','어리석어 보여도 꾸준히 노력하면 목표를 이룸','산을 옮기는 것은 불가능하다','지혜로운 사람만이 큰 일을 함'],answer:1,explain:'우공이산: 꾸준한 노력으로 불가능해 보이는 일도 이룰 수 있음을 뜻합니다.'},
+    {q:'「 청출어람 (靑出於藍) 」의 뜻은?',hint:'靑=푸를, 出=날, 於=어조사, 藍=쪽빛',options:['파란 하늘 아래에서 공부함','제자가 스승보다 뛰어남','파란색이 가장 아름다운 색이다','어른보다 아이가 빨리 배운다'],answer:1,explain:'청출어람: 쪽에서 뽑아낸 파란 물감이 쪽보다 더 파랗다는 뜻. 제자가 스승보다 더 뛰어남을 비유합니다.'},
+    {q:'「 오십보백보 (五十步百步) 」의 뜻은?',hint:'五十=오십, 步=걸음, 百=백',options:['오십 걸음과 백 걸음은 큰 차이다','정도의 차이는 있지만 본질적으로 같다','천천히 걷는 것이 빠르게 뛰는 것보다 낫다','걸음 수를 세어야 정확한 거리를 안다'],answer:1,explain:'오십보백보: 조금 낫고 못한 차이가 있어도 본질적으로는 같음을 의미합니다.'},
+    {q:'「 설상가상 (雪上加霜) 」의 뜻은?',hint:'雪=눈, 上=위, 加=더할, 霜=서리',options:['눈 위에 서리 — 어려움에 어려움이 더해짐','눈이 오면 서리가 사라진다','겨울은 눈과 서리로 매우 아름답다','나쁜 일 후에는 반드시 좋은 일이 온다'],answer:0,explain:'설상가상: 어려운 상황에서 또 다른 어려움이 겹쳐 더욱 힘들어짐을 비유합니다.'},
+    {q:'「 군계일학 (群鷄一鶴) 」의 뜻은?',hint:'群=무리, 鷄=닭, 一=하나, 鶴=학',options:['닭 무리 중 학 한 마리 — 평범한 사람들 중 뛰어난 인물','학이 닭보다 귀하다','무리 속에서 홀로 지내는 것','닭과 학은 서로 사이가 나쁘다'],answer:0,explain:'군계일학: 평범한 사람들 가운데서 특별히 뛰어난 사람을 비유합니다.'},
+    {q:'「 전전긍긍 (戰戰兢兢) 」의 뜻은?',hint:'戰=떨, 兢=삼갈',options:['전쟁을 즐거워함','매우 두려워하거나 조심스러워 떠는 모습','전력을 다해 최선을 다함','신중하게 계획을 세움'],answer:1,explain:'전전긍긍: 몹시 두려워하거나 걱정으로 안절부절못하는 상태를 나타냅니다.'},
+    {q:'「 위풍당당 (威風堂堂) 」의 뜻은?',hint:'威=위엄, 風=모습, 堂堂=당당할',options:['바람이 세게 불어 매우 위험함','기세가 당당하고 의젓하며 위엄 있음','위험을 무릅쓰고 당당히 나섬','높은 건물 위에서 내려다보는 기분'],answer:1,explain:'위풍당당: 보기에 씩씩하고 당당하며 위엄이 있는 모양을 뜻합니다.'},
+    {q:'「 구사일생 (九死一生) 」의 뜻은?',hint:'九=아홉, 死=죽을, 一=하나, 生=살',options:['아홉 번 죽고 한 번 살아남 — 거의 죽을 뻔하다 겨우 살아남','아홉 번 도전하면 한 번은 성공함','죽음을 각오하고 살아가는 태도','생사를 초월한 깨달음'],answer:0,explain:'구사일생: 거의 죽을 뻔한 위기에서 겨우 살아남음을 비유합니다.'},
+    {q:'「 금상첨화 (錦上添花) 」의 뜻은?',hint:'錦=비단, 上=위, 添=더할, 花=꽃',options:['비단 위에 꽃 — 좋은 것에 좋은 것을 더함','비단 옷을 꽃으로 장식함','꽃밭에서 비단을 만듦','화려한 것은 필요 없다'],answer:0,explain:'금상첨화: 이미 좋은 것에 더 좋은 것이 더해져 한층 돋보임을 비유합니다.'},
+  ],
+  // ── 10대 신조어 ──
+  teen:[
+    {q:'10대들이 쓰는 「 갓생 」의 뜻은?',hint:'영어 God + 생(生)',options:['신이 내린 삶처럼 부지런하고 알차게 사는 삶','게임 속 신 캐릭터','갓 태어난 아기처럼 순수한 삶','특별한 재능을 가진 사람'],answer:0,explain:'갓생(God+生): A life lived productively and diligently, like a "godly" existence. Used when someone exercises, studies, and manages their time perfectly. e.g. "오늘도 갓생 살았다 = I lived a godly productive life today."'},
+    {q:'「 억까 」의 뜻은?',hint:'억지로 까다의 줄임말',options:['억울하게 칭찬받음','억지로 트집 잡아 비난함','억울해서 우는 것','억지로 웃기려는 행동'],answer:1,explain:'억까: Short for "억지로 까다" — to criticize or nitpick someone unfairly without valid reason. e.g. "왜 억까하냐? = Why are you unfairly criticizing them?"'},
+    {q:'「 킹받다 」의 의미는?',hint:'영어 King + 받다',options:['왕처럼 대접받다','매우 화가 나고 짜증스럽다','대단한 칭찬을 받다','왕에게 선물을 받다'],answer:1,explain:'킹받다: Extremely annoying or infuriating. A stronger, playful version of "열받다 (to be pissed off)." e.g. "진짜 킹받네 = This is insanely frustrating."'},
+    {q:'「 알잖아 」와 「 알아챙겨 」를 줄인 신조어는?',hint:'요즘 10대가 쓰는 줄임말',options:['알챙','알냥','알잖','알리미'],answer:1,explain:'알냥: Short for "알아서 챙겨" meaning "Take care of it yourself / figure it out." Used casually among close friends. e.g. "밥은 알냥해 = Sort out your own food."'},
+    {q:'「 갈비 」가 10대 사이에서 신조어로 쓰일 때 뜻은?',hint:'갈수록 비호감의 줄임말',options:['갈비뼈처럼 말랐다','갈수록 비호감인 사람','갈비살을 좋아하는 사람','갈 곳이 비어있다'],answer:1,explain:'갈비: Short for "갈수록 비호감" — someone who becomes more unlikeable the more you get to know them. e.g. "쟤 진짜 갈비야 = The more I know them, the more I dislike them."'},
+    {q:'「 ㅂㅂ」 또는 「 바바 」를 채팅에서 쓸 때 뜻은?',hint:'영어 Bye Bye의 발음을 한국어로',options:['빠르게 밥 먹자','바보 같다','잘 가 / 안녕 (작별 인사)','바빠서 못 간다'],answer:2,explain:'바바 / ㅂㅂ: A casual farewell "bye bye" in Korean texting. Borrowed from English and written phonetically. Commonly used among teens in KakaoTalk or DMs.'},
+    {q:'「 스불재 」의 뜻은?',hint:'스스로 불러온 재앙의 줄임말',options:['스스로 불러온 재앙','스케줄 불참 재확인','스트레스 불안 재발','스마트폰 불량 재고'],answer:0,explain:'스불재: Short for "스스로 불러온 재앙" — a disaster you brought upon yourself. Self-inflicted trouble. e.g. "이건 스불재야 = This is a mess you created yourself."'},
+    {q:'「 핵노잼 」에서 「 핵 」의 역할은?',hint:'핵 = nuclear / 극도로',options:['진짜처럼 보이게 하는 말','매우·극도로를 뜻하는 강조 접두사','핵무기처럼 위험하다는 경고','핵심이라는 뜻'],answer:1,explain:'핵(核): Used as an intensifying prefix meaning "extremely / super." 핵노잼 = extremely boring, 핵꿀잼 = extremely fun. Like saying "hella" or "super" in English slang.'},
+    {q:'「 존맛탱 」의 뜻은?',hint:'존나 맛있다의 줄임 변형',options:['존재하는 맛의 탱탱함','매우 맛있다','존경받는 맛집','맛이 탱글탱글하다'],answer:1,explain:'존맛탱: Extremely delicious! A slang intensification of "맛있다 (delicious)." The "존" prefix (from 존나) means "super/extremely." e.g. "이 떡볶이 존맛탱 = This tteokbokki is insanely good!"'},
+    {q:'「 TMI 」를 한국 10대들은 어떤 뜻으로 쓰나요?',hint:'Too Much Information의 약자',options:['알 필요 없는 과도한 개인 정보를 공유함','매우 중요한 정보','정보를 너무 적게 줌','모르는 척하는 행동'],answer:0,explain:'TMI (Too Much Information): Sharing excessive or unnecessarily personal details nobody asked for. Used in Korean exactly as in English. e.g. "그건 TMI야 = That\'s way too much info."'},
+  ],
+  // ── 20대 신조어 ──
+  twenty:[
+    {q:'「 갠찮 」의 뜻은?',hint:'개인적으로 괜찮다의 줄임',options:['개념 없이 찮아하다','개인적으로는 괜찮다','개강 첫날 찾아가다','개성 있는 찬사'],answer:1,explain:'갠찮: Short for "개인적으로 괜찮다" — "I\'m personally fine with it / it\'s okay for me." Common in 20s texting culture. e.g. "나는 갠찮아 = I\'m personally fine."'},
+    {q:'「 넵 」을 직장 카톡에서 쓸 때 의미는?',hint:'네 + ㅂ니다의 합성',options:['네, 알겠습니다 (공손한 수락)','아니오라는 반어적 표현','나중에 보겠다','넵튠처럼 강력하다'],answer:0,explain:'넵: A polite, slightly formal way to say "yes/understood" in messaging, blending "네" and the formal ending "-ㅂ니다." Common in workplace KakaoTalk. Sounds more professional than just "ㅇㅇ."'},
+    {q:'「 현타 」의 뜻은?',hint:'현실 자각 타임의 줄임말',options:['현재 타이머 작동 중','현실을 갑자기 자각하며 허탈해지는 순간','현금 타격 이벤트','현지 타운 여행'],answer:1,explain:'현타 (現打): Short for "현실 자각 타임" — the moment when reality hits you hard and you feel the emptiness or futility of your situation. e.g. "갑자기 현타 왔어 = Reality just hit me hard."'},
+    {q:'「 워라밸 」이란?',hint:'영어 Work-Life Balance의 한국식 발음',options:['워크샵 라인 밸런스','일과 생활의 균형','워터파크 라이딩 밸리','워낙 라떼는 밸런스가 좋았다'],answer:1,explain:'워라밸 (Work-Life Balance): The balance between work and personal life. A major concern for Korean millennials and Gen Z who reject the "work is everything" culture. e.g. "워라밸이 좋은 직장 = A job with good work-life balance."'},
+    {q:'「 MZ세대 」에서 M과 Z는 각각 무엇을 뜻하나요?',hint:'세대 구분 용어',options:['M=밀레니얼, Z=Z세대 (1990년대~2000년대 초반 출생)','M=모바일, Z=제로세대','M=메타버스, Z=제페토 세대','M=무한도전, Z=젝스키스 팬'],answer:0,explain:'MZ세대: Millennials (born ~1981-1996) + Gen Z (born ~1997-2012). In Korea, this term is widely used in media and marketing to describe young consumers who value individuality, digital fluency, and work-life balance.'},
+    {q:'「 갓생 」 반대 개념으로 쓰이는 「 눕세 」의 뜻은?',hint:'눕다 + 세대/생활',options:['누워서 모든 것을 해결하는 여유로운 삶','눈이 부신 세상','누워서 세금을 내다','눕는 것이 세상에서 제일 좋다'],answer:0,explain:'눕세 (눕다+世): The lifestyle of doing everything lying down — symbolizing rest, relaxation, and minimal effort. The ironic counterpart to 갓생. Represents 20s who are exhausted and choosing rest over hustle culture.'},
+    {q:'「 플렉스 (Flex) 」를 한국 20대가 쓸 때 뜻은?',hint:'영어 flex에서 유래',options:['스트레칭하다','자신의 재력이나 능력을 과시하다','유연하게 생각하다','직장을 유연하게 다니다'],answer:1,explain:'플렉스 (Flex): To flaunt or show off wealth, possessions, or achievements. Popularized by hip-hop culture. e.g. "오늘 플렉스했다 = I splurged / showed off today." Often used humorously.'},
+    {q:'「 취준생 」이란?',hint:'취업 준비 + 생(生)의 줄임',options:['취미 준비 중인 사람','취업을 준비하는 사람','취미생활을 즐기는 사람','취약계층 준비위원'],answer:1,explain:'취준생 (就準生): Short for "취업 준비생" — a person preparing for employment, studying for job exams, building a resume, etc. A very common term in Korean society reflecting competitive job markets.'},
+    {q:'「 N포세대 」에서 N포의 의미는?',hint:'포기의 수가 늘어나는 세대',options:['N개의 포인트를 모으는 세대','N가지를 포기한 세대 (연애·결혼·출산 등)','N번 포상받은 세대','넷플릭스 포함 세대'],answer:1,explain:'N포세대: A generation that gives up N number of things — originally "3포" (dating, marriage, children), then "5포," "7포," now "N포" as economic hardship forces young Koreans to abandon more life milestones.'},
+    {q:'「 별다줄 」의 뜻은?',hint:'별걸 다 줄인다의 줄임말',options:['별로 다 줄어들다','별걸 다 줄인다 (무엇이든 줄임말로 만드는 현상)','별다른 줄거리가 없다','별자리 다이줄'],answer:1,explain:'별다줄: Short for "별걸 다 줄인다" — ironically commenting on the Korean tendency to abbreviate everything into slang. A meta-slang that acknowledges the culture of creating slang! e.g. "별다줄이네 = They abbreviate everything."'},
+  ],
+  // ── 40-50대 어휘 ──
+  middle:[
+    {q:'40-50대가 자주 쓰는 「 라떼는 말이야 」의 뜻은?',hint:'"나 때는 말이야"의 발음 변형',options:['라떼 커피를 마시며 하는 이야기','나 때는 말이야 — 과거 자랑·훈계 시작 멘트','라면과 떡을 함께 먹다','라디오 테이프는 말이야'],answer:1,explain:'라떼는 말이야: A humorous mimicry of older generations saying "나 때는 말이야 (Back in my day...)" — now used self-mockingly by 40-50s or to tease elders who lecture about the past. e.g. "또 라떼 시작이야? = Are you doing the \'back in my day\' thing again?"'},
+    {q:'「 꼰대 」의 현재 뜻은?',hint:'원래는 아버지·선생님을 뜻하는 은어',options:['꼭 대답해야 하는 사람','권위적이고 자기 방식만 고집하는 나이 든 사람','꼼꼼하고 대단한 사람','꽃을 대신 사주는 사람'],answer:1,explain:'꼰대: Originally slang for "father" or "teacher," now means an authoritarian older person who insists on their own way and lectures younger people. Being called a 꼰대 is a social warning sign in Korean workplaces. e.g. "꼰대짓 하지 마세요 = Stop being so old-fashioned and preachy."'},
+    {q:'「 IMF 세대 」란 어떤 세대를 말하나요?',hint:'1997년 한국 경제위기',options:['국제통화기금 직원 자녀들','1997년 외환위기를 청년기에 겪은 세대','I am Fabulous의 줄임말 세대','인터넷 모바일 파이낸스 세대'],answer:1,explain:'IMF 세대: Koreans who experienced the 1997 Asian Financial Crisis (IMF bailout) during their youth or early career. Characterized by extreme job insecurity, frugality, and a "work hard to survive" mentality. A defining generation in modern Korean history.'},
+    {q:'40-50대 직장 문화에서 「 회식 」의 의미는?',hint:'會食 = 모여서 먹다',options:['혼자 먹는 식사','직장 동료들과 함께 하는 저녁 식사 및 음주 모임','회의 중 먹는 도시락','회원 식권'],answer:1,explain:'회식 (會食): A company dinner/drinking gathering. Traditionally mandatory in Korean work culture — refusing was risky. Younger generations now push back against forced 회식, making it a generational flashpoint. e.g. "회식은 업무의 연장이다 vs. 회식은 내 시간 침해다."'},
+    {q:'「 아재 개그 」란?',hint:'아재 = 아저씨의 친근한 말',options:['아저씨들이 만든 개그 프로그램','중년 남성이 즐기는 썰렁하고 유치한 말장난 유머','아기와 재미있게 노는 방법','아침 재운동 개인 기록'],answer:1,explain:'아재개그: "Dad jokes" — the corny, groan-worthy puns and wordplay humor typical of middle-aged Korean men (아재/아저씨). Now used affectionately or mockingly. e.g. "또 아재개그야? = Another dad joke?"'},
+    {q:'「 사오정 」, 「 오륙도 」는 무엇을 풍자하는 말인가요?',hint:'직장 은퇴 나이와 관련',options:['45세에 정리해고, 56세까지 있으면 도둑 — 조기 퇴직 압박 풍자','사월 오월 정기 도착','사회 오락 정보 도서','사투리 오해 정정 도움'],answer:0,explain:'사오정 (45定): Fired at 45. 오륙도 (56盜): Still working at 56 is "stealing." These bitter terms reflect the extreme pressure on Korean middle-aged workers facing early forced retirement in a youth-centric job market.'},
+    {q:'40-50대가 쓰는 「 문송합니다 」의 뜻은?',hint:'문과여서 죄송합니다의 줄임',options:['문을 잘못 열어서 죄송하다','문과 출신이어서 죄송하다 (취업 어려움 자조)','문자를 늦게 보내서 죄송하다','문화 행사 송구스럽습니다'],answer:1,explain:'문송합니다: Short for "문과여서 죄송합니다" — "Sorry for being a humanities major." A self-deprecating joke about the perceived disadvantage of liberal arts degrees in Korea\'s STEM-focused job market. Reflects deep anxiety about employability.'},
+    {q:'「 등골 브레이커 」란?',hint:'부모의 등골을 휘게 만드는 것',options:['등산할 때 쓰는 브레이크','고가의 패딩 등 자녀를 위한 고액 소비로 부모 경제에 부담을 주는 것','등이 아파서 쉬는 사람','등록금 브레이크 이벤트'],answer:1,explain:'등골 브레이커: Items (expensive paddings, luxury goods) that children pressure parents to buy, "breaking their spine (등골)" with financial burden. Reflects the costly signaling culture among Korean students and parental sacrifice.'},
+    {q:'「 치맥 」이란?',hint:'한국의 대표적인 음식 조합',options:['치즈와 막걸리','치킨과 맥주','치아와 맥락','치료와 맥박'],answer:1,explain:'치맥 (치킨+맥주): Fried chicken + beer — Korea\'s most iconic food pairing. A cultural staple for watching sports (especially the FIFA World Cup), socializing, and delivery culture. Beloved by all generations and famous worldwide after the drama "My Love from the Star."'},
+    {q:'40-50대가 자녀에게 자주 하는 「 SKY 캐슬 」이 상징하는 것은?',hint:'드라마 제목이자 사회 현상',options:['서울 하늘 위의 성','서울대·연세대·고려대 입시를 위한 과열 교육 경쟁','스카이다이빙 캐슬 리조트','사교육 회사 이름'],answer:1,explain:'SKY 캐슬: Originally a hit drama (2018), now symbolizes the obsessive college entrance culture targeting Seoul National University (S), Yonsei (K), Korea University (Y). Represents extreme parental pressure and private tutoring culture in Korean society.'},
+  ],
+  // ── 한국 사회 현상 어휘 ──
+  social:[
+    {q:'「 헬조선 」이 뜻하는 것은?',hint:'Hell + 조선',options:['지옥처럼 힘든 한국 사회를 자조적으로 표현한 말','조선시대의 지옥도','한국의 핵발전소','헬스장이 많은 조선소'],answer:0,explain:'헬조선 (Hell+朝鮮): A cynical portmanteau meaning "Hell Korea" — expressing frustration with Korea\'s extreme competition, inequality, rigid hierarchy, and lack of social mobility. Popularized by youth in the 2010s. Reflects deep societal discontent.'},
+    {q:'「 흙수저 」와 「 금수저 」의 차이는?',hint:'수저 계급론',options:['흙수저=흙이 묻은 숟가락, 금수저=금으로 된 숟가락','흙수저=가난한 가정 출신, 금수저=부유한 가정 출신 (계급 불평등 표현)','식기 소재의 차이','숟가락 청결도의 차이'],answer:1,explain:'수저계급론 (Spoon Class Theory): A Korean adaptation of "born with a silver spoon." 금수저=wealthy family, 은수저=upper-middle class, 동수저=middle class, 흙수저=poor family. Reflects the belief that birth determines life outcomes — a major social concern in Korea.'},
+    {q:'「 집값 」 관련 신조어 「 영끌 」의 뜻은?',hint:'영혼까지 끌어모으다의 줄임',options:['영원히 끌어안다','영혼까지 끌어모아 대출받아 집을 사다','영리하게 끌어당기다','영업 끌어올리기'],answer:1,explain:'영끌: Short for "영혼까지 끌어모으다" — to scrape together every last resource (loans, savings) to buy property. Reflects Korea\'s extreme housing prices and young people\'s desperate attempts to enter the real estate market before prices rise further.'},
+    {q:'「 인구 소멸 」과 관련된 한국의 심각한 사회 현상은?',hint:'한국의 출산율은 세계 최저 수준',options:['인터넷 인구가 너무 많아지는 현상','출산율 감소로 인구가 줄어드는 현상 (2023년 합계출산율 0.72명)','인구가 도시로 집중되는 현상','인구 조사가 사라지는 현상'],answer:1,explain:'인구 소멸: Korea\'s total fertility rate hit 0.72 in 2023 — the world\'s lowest. Entire regions face extinction as young people delay or forgo marriage and children due to housing costs, career pressure, and changing values. A national crisis.'},
+    {q:'「 배달의민족 」, 「 쿠팡이츠 」 등의 앱이 만들어낸 문화는?',hint:'클릭 한 번으로 음식이 집 앞에',options:['직접 식당을 방문하는 문화','배달 앱을 통한 음식 배달 문화 (배달 문화)','배달부를 직접 고용하는 문화','식재료를 직접 재배하는 문화'],answer:1,explain:'배달 문화: Korea\'s world-class food delivery culture. Koreans can order almost anything to their door within 30 minutes. 배민 (Baemin) and Coupang Eats dominate. This culture exploded during COVID and is now a global benchmark for delivery services.'},
+    {q:'「 K-뷰티 」가 세계적으로 유명해진 이유와 가장 관련 있는 것은?',hint:'K-pop과 함께 성장한 한류',options:['한국 화장품이 저렴하기만 해서','K-pop 스타들의 피부 관리법과 스킨케어 루틴이 SNS로 전 세계에 퍼짐','한국 정부의 강제 수출','한국 화장품 공장의 규모'],answer:1,explain:'K-뷰티 (K-Beauty): Korean beauty products and skincare routines (10-step skincare, BB cream, sheet masks, etc.) became globally influential through K-pop idols\' flawless appearances and social media. Now a multi-billion dollar global industry.'},
+    {q:'「 카카오톡 」 문화에서 「 읽씹 」이란?',hint:'읽고 씹다(무시하다)의 줄임',options:['읽고 씹어서 소화하다','메시지를 읽었지만 답장하지 않고 무시하는 행동','읽기 쉽게 정리하다','읽어주셔서 감사합니다'],answer:1,explain:'읽씹: Being "read and ghosted" — seeing the read receipt but receiving no reply. A major social anxiety in Korean messaging culture where KakaoTalk shows when messages are read. The opposite is "안읽씹" (ignoring without even reading). Causes significant social stress.'},
+    {q:'「 편의점 」이 한국에서 단순한 가게 이상의 의미를 갖는 이유는?',hint:'24시간, 도시락, 간편식, 공과금 납부까지',options:['편의점이 식당보다 맛있어서','24시간 운영하며 식사·공과금·택배·ATM 등 생활 전반을 해결하는 생활 인프라','편의점 알바가 취업의 꿈이어서','편의점 커피가 스타벅스보다 비싸서'],answer:1,explain:'편의점 (Convenience Store): In Korea, CU, GS25, 7-Eleven are not just stores — they\'re life infrastructure. You can pay bills, receive packages, eat hot meals (도시락), use ATMs, print documents, and even sleep at study cafes inside. Density is among the world\'s highest.'},
+    {q:'「 한강 라면 」이 문화적으로 의미하는 것은?',hint:'한강 공원에서의 음식 문화',options:['한강물로 끓인 라면','한강 공원에서 편의점 컵라면을 먹으며 즐기는 한국 특유의 여가 문화','한강 근처 라면 가게','한강 다리 위에서 먹는 음식'],answer:1,explain:'한강 라면: Eating instant cup noodles (with free hot water from Han River Park convenience stores) at the Han River is a beloved Korean leisure ritual. Symbolizes affordable joy, social bonding, and the unique "Han River picnic culture" famous among tourists and locals alike.'},
+    {q:'「 눈치 게임 」에서 「 눈치 」란 한국 문화에서 무엇을 의미하나요?',hint:'한국 사회생활의 필수 능력',options:['눈의 시력 측정','상대방의 기분·상황·의도를 빠르게 파악하는 사회적 감각','눈을 감고 하는 게임','눈썰미가 좋은 사람'],answer:1,explain:'눈치: The Korean social skill of reading the room — sensing others\' moods, intentions, and unspoken expectations without being told. "눈치 없다 = socially oblivious." "눈치 있다 = socially aware." A crucial survival skill in Korea\'s group-oriented culture. Foreigners often cite 눈치 as one of the hardest cultural concepts to master.'},
+  ],
+};
+const PREMIUM_QUESTIONS={
+  pack1:[
+    {q:'「 도저히 (到底) 」의 올바른 쓰임은?',hint:'到=이를, 底=밑/끝',options:['결국 어떻게 하여도 / 아무리 해도','밑바닥까지 조사함','도착한 자리에서 기다림','끝까지 완성함'],answer:0,explain:'도저히: 아무리 하여도. 부정어와 함께 쓰입니다. "도저히 이해할 수 없다."처럼 씁니다.',isPremium:true,packId:'pack1'},
+    {q:'「 천착 (穿鑿) 」의 의미로 옳은 것은?',hint:'穿=뚫을, 鑿=파낼',options:['표면만 훑어보다','어떤 원리나 사실을 깊이 파고들어 연구하다','넓게 펼쳐서 생각하다','빠르게 결론을 내리다'],answer:1,explain:'천착(穿鑿): 구멍을 뚫고 판다는 뜻으로, 어떤 문제나 원리를 집요하게 깊이 연구함을 뜻합니다.',isPremium:true,packId:'pack1'},
+    {q:'「 갈등 (葛藤) 」의 원래 한자적 의미는?',hint:'葛=칡, 藤=등나무',options:['두 사람이 서로 마주 보다','칡과 등나무가 서로 얽히듯 복잡하게 뒤얽힘','생각이 갈수록 깊어짐','등나무처럼 곧게 자라다'],answer:1,explain:'갈등(葛藤): 칡(葛)과 등나무(藤)가 서로 얽히는 데서 유래. 서로 다른 생각이나 욕구 등이 복잡하게 대립·충돌함을 뜻합니다.',isPremium:true,packId:'pack1'},
+    {q:'다음 중 「 방기 (放棄) 」의 유의어는?',hint:'放=놓을, 棄=버릴',options:['집착','포기','추구','완수'],answer:1,explain:'방기(放棄): 내버려 두거나 그냥 버린다는 뜻으로, 포기(抛棄)와 같은 뜻입니다. "책임을 방기하다."처럼 씁니다.',isPremium:true,packId:'pack1'},
+    {q:'「 자의적 (恣意的) 」의 의미는?',hint:'恣=마음대로, 意=뜻',options:['객관적 근거에 따른','일정한 규칙 없이 마음대로인','적극적으로 의지를 가진','사회적 합의에 기반한'],answer:1,explain:'자의적(恣意的): 일정한 원칙이나 기준 없이 그때그때 마음대로인. "자의적 해석"처럼 씁니다.',isPremium:true,packId:'pack1'},
+    {q:'「 반추 (反芻) 」의 확장된 의미는?',hint:'反=돌이킬, 芻=꼴/되새김',options:['식물을 다시 심다','지난 일을 되풀이하여 음미하고 생각하다','상대방의 주장을 반박하다','빠르게 앞으로 나아가다'],answer:1,explain:'반추(反芻): 소가 되새김질하듯 지난 일이나 생각을 되풀이하여 깊이 음미하는 것을 뜻합니다.',isPremium:true,packId:'pack1'},
+    {q:'「 표상 (表象) 」의 의미는?',hint:'表=겉/나타낼, 象=모양',options:['겉으로 나타난 상처','어떤 추상적 개념을 구체적으로 나타내는 것','물건의 표면에 새긴 그림','표면을 기준으로 계산한 값'],answer:1,explain:'표상(表象): 추상적인 것을 구체적인 형상으로 드러냄, 또는 그 형상. "민주주의의 표상"처럼 씁니다.',isPremium:true,packId:'pack1'},
+    {q:'「 당위 (當爲) 」의 정확한 의미는?',hint:'當=마땅할, 爲=할',options:['지금 당장 해야 할 일','마땅히 그렇게 해야 함, 또는 그러한 윤리적 의무','예정된 일정','결과가 이미 정해진 상태'],answer:1,explain:'당위(當爲): 마땅히 그렇게 해야 함, 또는 그렇게 해야 하는 도덕적·논리적 필연성. "당위성"처럼 씁니다.',isPremium:true,packId:'pack1'},
+  ],
+  pack2:[
+    {q:'「 시나브로 」의 뜻은?',hint:'변화의 속도와 관련된 말',options:['갑자기 빠르게','모르는 사이에 조금씩','시원하게 흘러내려','시끄럽게 떠들며'],answer:1,explain:'시나브로: 모르는 사이에 조금씩. "시나브로 봄이 왔다."처럼 자연스러운 변화를 나타냅니다.',isPremium:true,packId:'pack2'},
+    {q:'「 하냥 」의 의미는?',hint:'동작이나 상태의 지속성을 나타냄',options:['하루 종일','언제나 변함없이','하나도 없이','빠르게'],answer:1,explain:'하냥: 언제나 변함없이, 항상. "하냥 웃고 있다."처럼 씁니다.',isPremium:true,packId:'pack2'},
+    {q:'「 아련하다 」의 정확한 뜻은?',hint:'감각이나 기억에 관련된 고유어',options:['아주 선명하고 뚜렷하다','똑똑하지 않고 희미하다','아프고 쓰라리다','밝고 환하다'],answer:1,explain:'아련하다: 뚜렷하지 않고 희미하다. "아련한 추억"처럼 씁니다.',isPremium:true,packId:'pack2'},
+    {q:'「 나지막하다 」의 뜻은?',hint:'높이나 소리의 정도를 나타내는 말',options:['아주 높고 크다','꽤 낮거나 조용하다','전혀 들리지 않다','중간 높이이다'],answer:1,explain:'나지막하다: 조금 낮다, 또는 소리가 조금 조용하다. "나지막한 목소리"처럼 씁니다.',isPremium:true,packId:'pack2'},
+    {q:'「 겨레붙이 」의 뜻은?',hint:'인간 관계를 나타내는 고유어',options:['같은 나라 사람','한 겨레의 핏줄을 이어받은 친족','이웃 나라 사람','오래 사귄 친구'],answer:1,explain:'겨레붙이: 같은 겨레(민족)의 혈통을 이어받은 친척이나 동족.',isPremium:true,packId:'pack2'},
+    {q:'「 어처구니없다 」에서 「 어처구니 」란?',hint:'맷돌 부품과 관련이 있습니다',options:['엄청나게 큰 것','맷돌 손잡이 (있어야 할 것이 없음에서 유래)','어리석은 사람','예상치 못한 일'],answer:1,explain:'어처구니: 원래 맷돌의 손잡이를 뜻합니다. 어처구니(손잡이)가 없으면 맷돌을 돌릴 수 없다는 데서 "기가 막히다"는 뜻이 생겼습니다.',isPremium:true,packId:'pack2'},
+    {q:'「 거멓다 」와 「 검다 」의 차이는?',hint:'색의 정도를 나타내는 말',options:['거멓다가 더 어두운 검은색이다','검다가 더 어두운 검은색이다','둘은 완전히 같은 뜻이다','거멓다는 회색에 가깝다'],answer:0,explain:'거멓다는 "꽤 검다"의 뜻으로 검은 정도가 더 강합니다. 한국어에는 이처럼 색의 정도 차이를 나타내는 단어 쌍이 많습니다.',isPremium:true,packId:'pack2'},
+    {q:'「 오라비 」는 누구를 가리키는 말인가요?',hint:'가족 호칭 관련 고유어',options:['여동생이 오빠를 부르는 말','남동생이 누나를 부르는 말','어머니가 아들을 부르는 말','할머니가 손자를 부르는 말'],answer:0,explain:'오라비: 여자가 자신의 오빠나 남자 형제를 가리키거나 부르는 옛 말입니다.',isPremium:true,packId:'pack2'},
+  ],
+  pack3:[
+    {q:'「 까마귀 날자 배 떨어진다 」의 뜻은?',hint:'우연의 일치와 오해에 관련된 속담',options:['까마귀는 배를 좋아한다','아무 관계없는 일이 공교롭게 맞아 의심을 받다','까마귀가 날면 과일이 떨어진다','나쁜 일은 연달아 일어난다'],answer:1,explain:'아무런 관계가 없는 두 일이 공교롭게 같은 때에 일어나 마치 관계가 있는 것처럼 의심받게 됨을 비유합니다.',isPremium:true,packId:'pack3'},
+    {q:'「 말 한마디에 천 냥 빚도 갚는다 」의 교훈은?',hint:'언어의 힘에 관련된 속담',options:['돈보다 말이 더 가치 있다','말을 잘하면 어떤 어려운 일도 해결할 수 있다','빚은 반드시 갚아야 한다','말을 많이 하면 돈을 벌 수 있다'],answer:1,explain:'말의 힘이 얼마나 대단한지를 강조한 속담. 적절한 말 한마디가 어떤 어려운 상황도 해결할 수 있음을 뜻합니다.',isPremium:true,packId:'pack3'},
+    {q:'「 배보다 배꼽이 더 크다 」의 의미는?',hint:'중요성의 비율에 관련된 속담',options:['뱃속에 배꼽이 있다','부수적인 것이 주된 것보다 더 크거나 많다','배꼽이 아프면 배가 더 아프다','중요한 것은 보이지 않는다'],answer:1,explain:'주된 것보다 곁에 딸린 것이 더 크거나 많음을 비유합니다. 예: 선물값보다 포장비가 더 비쌀 때.',isPremium:true,packId:'pack3'},
+    {q:'「 귀에 걸면 귀걸이 코에 걸면 코걸이 」의 뜻은?',hint:'일관성과 기준에 관련된 표현',options:['장신구는 다양하게 사용할 수 있다','이리 보면 이렇고 저리 보면 저러하여 일정한 기준이 없다','사람마다 취향이 다르다','장식은 가리는 곳에 따라 효과가 다르다'],answer:1,explain:'이리저리 갖다 붙이기에 따라 달라진다는 뜻. 일정한 원칙 없이 형편에 따라 달라짐을 비유합니다.',isPremium:true,packId:'pack3'},
+    {q:'「 가재는 게 편 」의 의미는?',hint:'유유상종과 관련된 속담',options:['가재와 게는 천적이다','비슷한 것끼리 서로 편을 들고 돕는다','갑각류는 모두 같은 종류다','약자는 강자를 따른다'],answer:1,explain:'비슷한 처지에 있거나 같은 무리끼리 서로 편을 든다는 뜻입니다.',isPremium:true,packId:'pack3'},
+    {q:'「 남의 떡이 더 커 보인다 」의 심리적 의미는?',hint:'비교와 욕심에 관련된 속담',options:['남의 것은 실제로 더 크다','자기 것보다 남의 것이 더 좋아 보이는 심리','떡은 나눠 먹어야 맛있다','비교는 불행의 원인이다'],answer:1,explain:'자기 것은 실제보다 작아 보이고 남의 것은 실제보다 좋아 보이는 인간의 심리를 나타냅니다.',isPremium:true,packId:'pack3'},
+    {q:'「 하룻강아지 범 무서운 줄 모른다 」의 교훈은?',hint:'경험과 두려움에 관련된 속담',options:['강아지는 용감한 동물이다','경험이 없는 사람은 어려운 상황의 위험을 모르고 무모하게 행동한다','어린 것이 어른보다 용감하다','두려움을 모르면 성공할 수 있다'],answer:1,explain:'세상 물정을 모르는 어린 사람이 무서운 줄 모르고 무모하게 행동함을 나타냅니다.',isPremium:true,packId:'pack3'},
+    {q:'「 작은 고추가 더 맵다 」의 의미는?',hint:'크기와 능력에 관련된 속담',options:['고추는 작을수록 맛이 좋다','겉모습이 작거나 보잘것없어도 재주나 능력이 뛰어나다','작은 것이 항상 큰 것보다 우수하다','매운 음식은 건강에 좋다'],answer:1,explain:'겉모습이나 체구가 작더라도 재주나 야무진 기운은 오히려 더 뛰어난 경우를 비유합니다.',isPremium:true,packId:'pack3'},
+  ],
+};
+
+// ── 프리미엄 팩 정보 ──
+const PACKS=[
+  {
+    id:'pack1', name:'수능·고급 한자어 팩', icon:'📚',
+    desc:'도저·천착·갈등·당위 등\n수능 빈출 고급 한자어 8문제',
+    price:'₩1,900', badge:'NEW',
+    proTitle:'📜 학자 學者',          // 전용 칭호
+    theme:'theme-gold',               // 전용 테마
+    themeLabel:'✨ 황금 테마',
+    benefits:['📜 전용 칭호: 학자','✨ 황금 테마','💚 정답 +30점 보너스'],
+  },
+  {
+    id:'pack2', name:'희귀 고유어 탐험 팩', icon:'🌿',
+    desc:'시나브로·아련·하냥·겨레붙이 등\n사라져가는 아름다운 우리말 8문제',
+    price:'₩1,900', badge:null,
+    proTitle:'🌿 어문장관 語文長官',
+    theme:'theme-purple',
+    themeLabel:'💜 보라 테마',
+    benefits:['🌿 전용 칭호: 어문장관','💜 보라 테마','💚 정답 +30점 보너스'],
+  },
+  {
+    id:'pack3', name:'고급 속담·관용어 팩', icon:'📖',
+    desc:'까마귀 날자 배 떨어진다 등\n교과서 밖 고급 속담·관용어 8문제',
+    price:'₩1,900', badge:'HOT',
+    proTitle:'📖 언어지존 言語至尊',
+    theme:'theme-emerald',
+    themeLabel:'💚 에메랄드 테마',
+    benefits:['📖 전용 칭호: 언어지존','💚 에메랄드 테마','💚 정답 +30점 보너스'],
+  },
+];
+
+const RANKS=[
+  {name:'천민',emoji:'🪨',color:'#a0a0a0',minScore:0},
+  {name:'평민',emoji:'🌱',color:'#90b870',minScore:200},
+  {name:'귀족',emoji:'💎',color:'#70a8e0',minScore:500},
+  {name:'군주',emoji:'👑',color:'#e07040',minScore:900},
+  {name:'천제',emoji:'⚡',color:'#c9973a',minScore:1400},
+  {name:'조물주',emoji:'🌌',color:'#e0a0f0',minScore:99999},
+];
+
+const ENEMIES=[
+  {name:'문자신 文字神',emoji:'📜',desc:'오래된 문자의 수호신'},
+  {name:'언어왕 言語王',emoji:'🗡️',desc:'고대 언어를 지배하는 왕'},
+  {name:'시어령 詩語靈',emoji:'🌙',desc:'시와 노래의 정령'},
+  {name:'어문제 語文帝',emoji:'🔥',desc:'어문을 다스리는 황제'},
+  {name:'태초령 太初靈',emoji:'🌌',desc:'언어가 탄생한 태초의 존재'},
+];
+
+// ── 상태 ──
+let state={
+  playerName:'천민',score:0,combo:0,maxCombo:0,
+  correctCount:0,totalAnswered:0,rankIndex:0,
+  questions:[],currentQ:null,qIndex:0,
+  timerInterval:null,timeLeft:15,answered:false,
+  isDuel:false,duelRound:0,playerHp:3,enemyHp:3,currentEnemy:null,
+  ownedPacks:JSON.parse(localStorage.getItem('ownedPacks')||'[]'),
+  questionsSinceAd:0,
+};
+
+// ══════════════════════════════════════
+//  프리미엄 팩 렌더
+// ══════════════════════════════════════
+function renderPackGrid(){
+  const grid=document.getElementById('packGrid');
+  grid.innerHTML='';
+  PACKS.forEach(pack=>{
+    const owned=state.ownedPacks.includes(pack.id);
+    const card=document.createElement('div');
+    card.className='pack-card'+(owned?' owned':'');
+    const benefitChips=pack.benefits.map(b=>{
+      const cls=b.includes('칭호')?'chip-title':b.includes('테마')?'chip-theme':'chip-bonus';
+      return `<span class="pack-benefit-chip ${cls}">${b}</span>`;
+    }).join('');
+    card.innerHTML=`
+      <div class="pack-icon">${pack.icon}</div>
+      <div class="pack-info">
+        <div class="pack-name">${pack.name}</div>
+        <div class="pack-desc">${pack.desc.replace('\n','<br>')}</div>
+        <div class="pack-benefits">${benefitChips}</div>
+      </div>
+      <div class="pack-price ${owned?'owned-label':''}">${owned?'✓ 보유':pack.price}</div>
+      ${pack.badge&&!owned?`<div class="pack-badge">${pack.badge}</div>`:''}
+    `;
+    if(!owned) card.onclick=()=>openPurchaseModal(pack);
+    grid.appendChild(card);
+  });
+}
+
+let pendingPack=null;
+function openPurchaseModal(pack){
+  pendingPack=pack;
+  document.getElementById('modalTitle').textContent=`💎 ${pack.name}`;
+  document.getElementById('modalBody').innerHTML=
+    pack.desc.replace('\n','<br>')+'<br><br>'+
+    `<strong style="color:var(--premium-light);font-size:18px">${pack.price}</strong>에 구매하시겠습니까?<br>`+
+    `<span style="font-size:12px;color:var(--ash)">(데모: 실제 결제 없이 즉시 해제됩니다)</span>`;
+  document.getElementById('modalConfirmBtn').onclick=confirmPurchase;
+  document.getElementById('purchaseModal').classList.add('active');
+}
+function closeModal(){
+  document.getElementById('purchaseModal').classList.remove('active');
+  pendingPack=null;
+}
+function confirmPurchase(){
+  if(!pendingPack)return;
+  if(!state.ownedPacks.includes(pendingPack.id)){
+    state.ownedPacks.push(pendingPack.id);
+    localStorage.setItem('ownedPacks',JSON.stringify(state.ownedPacks));
+  }
+  closeModal();
+  flash(`🎉 "${pendingPack.name}" 구매 완료! ${pendingPack.proTitle} 칭호 획득!`);
+  applyPremiumPerks();
+  renderPackGrid();
+}
+
+// 보유 팩 중 첫 번째 팩의 테마·칭호 적용 (여러 팩 보유 시 최신 우선)
+function applyPremiumPerks(){
+  // 테마 초기화
+  document.body.classList.remove('theme-gold','theme-purple','theme-emerald');
+  state.proTitle=null;
+  if(state.ownedPacks.length===0)return;
+  // 마지막 구매한 팩 기준으로 테마 적용
+  const lastPack=PACKS.find(p=>p.id===state.ownedPacks[state.ownedPacks.length-1]);
+  if(lastPack){
+    document.body.classList.add(lastPack.theme);
+    state.proTitle=lastPack.proTitle;
+  }
+}
+
+// ══════════════════════════════════════
+//  유틸
+// ══════════════════════════════════════
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(id==='premiumScreen')renderPackGrid();
+}
+function showRankTable(){showScreen('rankScreen');}
+function flash(msg){
+  const el=document.getElementById('flashMsg');
+  el.textContent=msg; el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),2400);
+}
+function getRank(score){let r=RANKS[0];for(const rank of RANKS){if(score>=rank.minScore)r=rank;}return r;}
+function getRankIndex(score){let idx=0;for(let i=0;i<RANKS.length;i++){if(score>=RANKS[i].minScore)idx=i;}return idx;}
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function buildQuestionPool(count=20){
+  let pool=[];
+  ['hanja','native','proverb','idiom','teen','twenty','middle','social'].forEach(cat=>
+    pool.push(...QUESTIONS[cat].map(q=>({...q,cat,isPremium:false})))
+  );
+  state.ownedPacks.forEach(packId=>{
+    if(PREMIUM_QUESTIONS[packId])pool.push(...PREMIUM_QUESTIONS[packId].map(q=>({...q,cat:'premium_'+q.packId})));
+  });
+  return shuffle(pool).slice(0,count);
+}
+
+// ══════════════════════════════════════
+//  게임
+// ══════════════════════════════════════
+function startGame(){
+  const name=document.getElementById('nameInput').value.trim()||'천민';
+  Object.assign(state,{playerName:name,score:0,combo:0,maxCombo:0,correctCount:0,totalAnswered:0,rankIndex:0,qIndex:0,isDuel:false,questionsSinceAd:0,proTitle:null});
+  state.questions=buildQuestionPool(20);
+  applyPremiumPerks();
+  document.getElementById('premiumBadgeHud').style.display=state.ownedPacks.length>0?'block':'none';
+  showScreen('gameScreen');
+  updateHUD(); loadQuestion();
+}
+
+function updateHUD(){
+  document.getElementById('hudName').textContent=state.playerName;
+  const rank=getRank(state.score);
+  const el=document.getElementById('hudRank');
+  // 프리미엄 칭호가 있으면 계급 옆에 표시
+  el.textContent=`${rank.emoji} ${rank.name}`;
+  el.style.color=rank.color;
+  // 전용 칭호 배지 (HUD 이름 아래)
+  let titleEl=document.getElementById('proTitleDisplay');
+  if(!titleEl){
+    titleEl=document.createElement('span');
+    titleEl.id='proTitleDisplay';
+    titleEl.style.cssText='font-size:11px;letter-spacing:1px;margin-top:2px;';
+    document.querySelector('.hud-player').appendChild(titleEl);
+  }
+  if(state.proTitle){
+    titleEl.textContent=state.proTitle;
+    titleEl.style.color='var(--premium-light)';
+  } else {
+    titleEl.textContent='';
+  }
+  document.getElementById('hudScore').textContent=state.score.toLocaleString();
+  const idx=getRankIndex(state.score);
+  const cur=RANKS[idx],nxt=RANKS[Math.min(idx+1,RANKS.length-1)];
+  let pct=0;
+  if(nxt.minScore!==cur.minScore)pct=Math.min(100,((state.score-cur.minScore)/(nxt.minScore-cur.minScore))*100);
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('progressPct').textContent=Math.floor(pct)+'%';
+  document.getElementById('progressLabel').textContent=idx===RANKS.length-1?'조물주 달성!':nxt.emoji+' '+nxt.name+'까지';
+  if(idx>state.rankIndex){
+    state.rankIndex=idx;
+    flash(`🎉 계급 상승! ${RANKS[idx].emoji} ${RANKS[idx].name} 달성!`);
+    if(RANKS[idx].name==='천제')setTimeout(offerDuel,1600);
+  }
+}
+
+const CAT_LABELS={
+  hanja:'한자어', native:'고유어', proverb:'속담', idiom:'한자성어',
+  teen:'🔥 10대 신조어', twenty:'💬 20대 신조어',
+  middle:'🧓 40-50대 어휘', social:'🇰🇷 한국 사회현상',
+  premium_pack1:'💎 고급 한자어', premium_pack2:'💎 희귀 고유어', premium_pack3:'💎 고급 속담',
+};
+const CAT_CLASSES={
+  hanja:'cat-hanja', native:'cat-native', proverb:'cat-proverb', idiom:'cat-idiom',
+  teen:'cat-teen', twenty:'cat-twenty', middle:'cat-middle', social:'cat-social',
+  premium_pack1:'cat-premium-pack1', premium_pack2:'cat-premium-pack2', premium_pack3:'cat-premium-pack3',
+};
+
+function loadQuestion(){
+  if(state.qIndex>=state.questions.length)state.questions=[...state.questions,...buildQuestionPool(10)];
+  // 5문제마다 광고
+  state.questionsSinceAd++;
+  const adEl=document.getElementById('inGameAd');
+  if(state.questionsSinceAd%5===0){adEl.style.display='flex';setTimeout(()=>{adEl.style.display='none';},4000);}
+  state.currentQ=state.questions[state.qIndex];
+  state.answered=false;
+  const q=state.currentQ;
+  const catEl=document.getElementById('qCategory');
+  catEl.textContent=CAT_LABELS[q.cat]||q.cat;
+  catEl.className=`q-category ${CAT_CLASSES[q.cat]||'cat-idiom'}`;
+  document.getElementById('questionCard').className='question-card'+(q.isPremium?' premium-q':'');
+  document.getElementById('qText').textContent=q.q;
+  document.getElementById('qHint').textContent=`힌트: ${q.hint}`;
+  document.getElementById('explainBox').textContent='';
+  renderOptions('optionsGrid',q.options,answerGame);
+  startTimer(15,'timerCircle','timerNum',()=>timeoutAnswer());
+}
+
+function renderOptions(gridId,options,callback){
+  const grid=document.getElementById(gridId); grid.innerHTML='';
+  ['①','②','③','④'].forEach((l,i)=>{
+    const btn=document.createElement('button');
+    btn.className='opt-btn';
+    btn.innerHTML=`<span class="opt-letter">${l}</span>${options[i]}`;
+    btn.onclick=()=>callback(i);
+    grid.appendChild(btn);
+  });
+}
+
+function startTimer(sec,circleId,numId,onExpire){
+  clearInterval(state.timerInterval); state.timeLeft=sec;
+  const circle=document.getElementById(circleId),numEl=document.getElementById(numId);
+  function tick(){
+    numEl.textContent=state.timeLeft;
+    circle.style.strokeDashoffset=126-(state.timeLeft/sec)*126;
+    circle.style.stroke=state.timeLeft<=5?'#e07040':'var(--gold)';
+    if(state.timeLeft<=0){clearInterval(state.timerInterval);onExpire();}
+    state.timeLeft--;
+  }
+  tick(); state.timerInterval=setInterval(tick,1000);
+}
+
+function answerGame(selected){
+  if(state.answered)return;
+  state.answered=true; clearInterval(state.timerInterval); state.totalAnswered++;
+  const q=state.currentQ,correct=selected===q.answer;
+  markOptions('optionsGrid',selected,q.answer);
+  document.getElementById('explainBox').textContent=q.explain;
+  if(correct){
+    state.correctCount++; state.combo++;
+    if(state.combo>state.maxCombo)state.maxCombo=state.combo;
+    const pts=50+Math.floor(state.timeLeft*2)+(state.combo>=3?(state.combo-2)*20:0)+(q.isPremium?30:0);
+    state.score+=pts; showCombo(state.combo,pts);
+  } else { state.combo=0; document.getElementById('comboText').classList.remove('show'); }
+  updateHUD(); state.qIndex++; setTimeout(loadQuestion,1800);
+}
+
+function timeoutAnswer(){
+  if(state.answered)return;
+  state.answered=true; state.totalAnswered++; state.combo=0;
+  document.getElementById('comboText').classList.remove('show');
+  const q=state.currentQ;
+  markOptions('optionsGrid',-1,q.answer);
+  document.getElementById('explainBox').textContent=`⏰ 시간 초과! 정답: ${q.options[q.answer]} — ${q.explain}`;
+  state.qIndex++; setTimeout(loadQuestion,2200);
+}
+
+function markOptions(gridId,selected,correct){
+  document.getElementById(gridId).querySelectorAll('.opt-btn').forEach((btn,i)=>{
+    btn.disabled=true;
+    if(i===correct)btn.classList.add('correct');
+    else if(i===selected)btn.classList.add('wrong');
+  });
+}
+
+function showCombo(combo,pts){
+  const el=document.getElementById('comboText');
+  el.innerHTML=combo>=2?`🔥 ${combo} 콤보! <span style="color:#eee;font-weight:400">+${pts}점</span>`:`<span style="color:#eee;font-weight:400">+${pts}점</span>`;
+  el.classList.add('show');
+  if(combo<2)setTimeout(()=>el.classList.remove('show'),1400);
+}
+
+// ── 천제 대결 ──
+function offerDuel(){
+  clearInterval(state.timerInterval);
+  const rank=getRank(state.score);
+  document.getElementById('resultEmblem').textContent=rank.emoji;
+  document.getElementById('resultEmblem').style.background=`radial-gradient(circle,${rank.color}80,${rank.color}20)`;
+  document.getElementById('resultRankName').textContent=rank.name;
+  document.getElementById('resultRankName').style.color=rank.color;
+  document.getElementById('resultMsg').textContent='⚡ 천제 달성! 이제 대결로 조물주를 노려라!';
+  document.getElementById('statScore').textContent=state.score.toLocaleString();
+  document.getElementById('statCorrect').textContent=state.correctCount;
+  document.getElementById('statCombo').textContent=state.maxCombo;
+  document.getElementById('nextRankInfo').innerHTML=`<strong style="color:var(--gold)">🌌 조물주까지 한 걸음!</strong><br>적 천제를 꺾고 언어의 신, 조물주가 되어라!`;
+  const btn=document.getElementById('resultBtn');
+  btn.textContent='⚔ 천제 대결 시작'; btn.onclick=startDuel;
+  showScreen('resultScreen');
+}
+
+function handleResultBtn(){if(state.score>=1400)startDuel();else startGame();}
+
+function startDuel(){
+  Object.assign(state,{isDuel:true,duelRound:0,playerHp:3,enemyHp:3});
+  state.currentEnemy=ENEMIES[Math.floor(Math.random()*ENEMIES.length)];
+  state.questions=shuffle(buildQuestionPool(15)); state.qIndex=0;
+  document.getElementById('duelPlayerName').textContent=`⚡ ${state.playerName}`;
+  document.getElementById('enemyEmoji').textContent=state.currentEnemy.emoji;
+  document.getElementById('enemyName').textContent=state.currentEnemy.name;
+  document.getElementById('duelSubtitle').textContent=`${state.currentEnemy.desc}와의 최후의 결전!`;
+  updateDuelHp(); showScreen('duelScreen'); loadDuelQuestion();
+}
+
+function loadDuelQuestion(){
+  if(state.qIndex>=state.questions.length)state.questions=[...state.questions,...buildQuestionPool(10)];
+  state.currentQ=state.questions[state.qIndex]; state.answered=false;
+  const q=state.currentQ,catEl=document.getElementById('duelQCategory');
+  catEl.textContent=CAT_LABELS[q.cat]||q.cat;
+  catEl.className=`q-category ${CAT_CLASSES[q.cat]||'cat-idiom'}`;
+  document.getElementById('duelQText').textContent=q.q;
+  document.getElementById('duelQHint').textContent=`힌트: ${q.hint}`;
+  document.getElementById('duelExplainBox').textContent='';
+  renderOptions('duelOptionsGrid',q.options,answerDuel);
+  startTimer(10,'duelTimerCircle','duelTimerNum',()=>answerDuel(-1));
+}
+
+function updateDuelHp(){
+  document.getElementById('playerHpBar').style.width=(state.playerHp/3*100)+'%';
+  document.getElementById('enemyHpBar').style.width=(state.enemyHp/3*100)+'%';
+  document.getElementById('playerHpText').textContent=`HP ${state.playerHp}/3`;
+  document.getElementById('enemyHpText').textContent=`HP ${state.enemyHp}/3`;
+}
+
+function answerDuel(selected){
+  if(state.answered)return;
+  state.answered=true; clearInterval(state.timerInterval);
+  const correct=selected===state.currentQ.answer;
+  markOptions('duelOptionsGrid',selected,state.currentQ.answer);
+  document.getElementById('duelExplainBox').textContent=state.currentQ.explain;
+  if(correct){state.enemyHp--;flash('⚔ 공격 성공! 적 HP -1');}
+  else{state.playerHp--;flash('💥 공격 실패! 내 HP -1');}
+  updateDuelHp(); state.qIndex++; state.duelRound++;
+  if(state.playerHp<=0)setTimeout(duelLose,1800);
+  else if(state.enemyHp<=0)setTimeout(duelWin,1800);
+  else setTimeout(loadDuelQuestion,1800);
+}
+
+function duelWin(){state.score+=1000;state.rankIndex=RANKS.length-1;showDuelResult(true);}
+function duelLose(){showDuelResult(false);}
+
+function showDuelResult(won){
+  const rank=won?RANKS[RANKS.length-1]:getRank(state.score);
+  document.getElementById('resultEmblem').textContent=rank.emoji;
+  document.getElementById('resultEmblem').style.background=`radial-gradient(circle,${rank.color}80,${rank.color}20)`;
+  document.getElementById('resultRankName').textContent=rank.name;
+  document.getElementById('resultRankName').style.color=rank.color;
+  document.getElementById('resultMsg').textContent=won?`🌌 ${state.currentEnemy.name}을(를) 제압하고 조물주가 되었다!`:`💀 ${state.currentEnemy.name}에게 패배했습니다. 다시 도전하라!`;
+  document.getElementById('statScore').textContent=state.score.toLocaleString();
+  document.getElementById('statCorrect').textContent=state.correctCount;
+  document.getElementById('statCombo').textContent=state.maxCombo;
+  document.getElementById('nextRankInfo').innerHTML=won
+    ?`<strong style="color:#e0a0f0">🌌 축하합니다! 당신이 바로 조물주입니다!</strong><br>모든 언어와 어휘를 지배하는 최고의 존재가 되었습니다!`
+    :`<strong style="color:var(--gold)">포기하지 마세요!</strong><br>어휘 실력을 더 갈고닦아 다시 대결에 도전하세요.`;
+  const btn=document.getElementById('resultBtn');
+  btn.textContent=won?'🌌 새 도전 시작':'⚔ 다시 도전';
+  btn.onclick=won?()=>{state.score=0;state.rankIndex=0;startGame();}:startDuel;
+  showScreen('resultScreen');
+}
+
+document.getElementById('nameInput').addEventListener('keydown',e=>{if(e.key==='Enter')startGame();});
+
+// 페이지 로드 시 저장된 팩 테마 복원
+(function initPerks(){
+  if(state.ownedPacks.length>0){
+    const lastPack=PACKS.find(p=>p.id===state.ownedPacks[state.ownedPacks.length-1]);
+    if(lastPack) document.body.classList.add(lastPack.theme);
+  }
+})();
+</script>
+</body>
+</html>
